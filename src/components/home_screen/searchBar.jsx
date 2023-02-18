@@ -2,30 +2,30 @@ import {React, useState} from "react";
 
 const SearchBar = () => {
   const [state, setState] = useState({
-    query: ""
+    title: "",
+    keywords: "",
   });
-  const { query } = state;
+  const { title, keywords } = state;
   // Use the above function later to make search bar
   const handleClick = () => {
-    console.log("Click");
+    console.log(state);
   }
 
-  const handleChange = e => {
-    e.preventDefault();
-    setState({
+  const handleChange = query => {
+    return e => setState({
       ...state,
-      query: e.currentTarget.value
+      [query]: e.currentTarget.value
     })
   }
 
   return (
     <div className="searchBar">
       <div>
-        <input type="text" onChange={handleChange} value={query}/>
+        <input type="text" onChange={handleChange("title")} value={title}/>
       </div>
 
       <div>
-        <textarea cols="30" rows="10"></textarea>
+        <textarea onChange={handleChange("keywords")} value={keywords} cols="30" rows="10"></textarea>
       </div>
 
       <div>

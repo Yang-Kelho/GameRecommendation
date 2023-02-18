@@ -1,9 +1,9 @@
 import React from "react";
 
-const VideoGameItem = () => {
+const VideoGameItem = dic => {
   return (
     <div className="videoGameItem">
-      video game
+      {dic.props.array}
     </div>
   )
 }

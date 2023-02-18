@@ -1,17 +1,14 @@
 import React from "react";
-import NavBar from "./navBar";
 import SearchBar from "./searchBar";
-import VideoGame from "./videoGames";
-import './homeScreen.css';
+import VideoGame from "./video_game/videoGames";
+import '../stylesheets/homeScreen.css';
 
 const HomeScreen = () => {
+  const array = [1, 2, 3, 4, 5, 6, 7]
   return ( 
     <div className="homeScreen">
-      <NavBar/>
-      <div className="main">
-        <SearchBar/>
-        <VideoGame/>
-      </div>
+      <SearchBar/>
+      <VideoGame array={array}/>
     </div>
   )
 }
