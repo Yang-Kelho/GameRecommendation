@@ -8,7 +8,7 @@
   flex-direction: column;
 }
 
-.gameRecommendation {
+.title { 
   font-size: 24px;
   background-color: white;
   display: flex;
@@ -17,3 +17,14 @@
   flex-direction: column;
 }
 
+.navButtonContainer {
+  align-items: center;
+  justify-content: center;
+}
+
+.navProfile {
+  margin: 10px;
+  border: 10px;
+  background-color: gray;
+  justify-content: center;
+}

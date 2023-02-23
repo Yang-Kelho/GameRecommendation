@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import '../stylesheets/navBar.css';
 
 const NavBar = props => {
-  const { test, array } = props;
   const navigate = useNavigate();
   const toSaved = () => {
     navigate('/saved');
@@ -17,32 +16,37 @@ const NavBar = props => {
   const toList = () => {
     navigate('/list');
   }
+  
+  const toCommunity = () => {
+    navigate('/community');
+  }
+
   return (
     <nav className="navBar">
       <div>
-        <div className="gameRecommendation">
+        <div className="title">
           <span> Game </span>
           <span> Recommendation </span> 
         </div> 
 
-        <div className="home">
-          <button onClick={toHome}> Home </button>
-        </div>
-        <div className="saved">
-          <button onClick={toSaved}> Saved </button>
-        </div>
-        <div className="list">
-          <button onClick={toList}> List </button>
-        </div>
-        <div>
-          <div className="community">Community</div>
+        <div className="navButtonContainer">
+          <div className="navHome">
+            <button onClick={toHome}> Home </button>
+          </div>
+          <div className="navSaved">
+            <button onClick={toSaved}> Saved </button>
+          </div>
+          <div className="navList">
+            <button onClick={toList}> List </button>
+          </div>
+          <div className="navCommunity">
+            <button onClick={toCommunity}> Community </button>
+          </div>
         </div>
 
       </div>
 
-      <button onClick={() => console.log(array)}> array </button>
-
-      <div>
+      <div className="navProfile">
         <div>Username</div>
       </div>
     </nav> 

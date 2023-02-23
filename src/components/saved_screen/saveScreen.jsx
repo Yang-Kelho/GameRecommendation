@@ -1,11 +1,10 @@
 import React from "react";
 
 const SaveScreen = () => {
-
   return (
     <div className="saveScreen">
       <div>
-        Hello World
+        Save Screen
       </div>
     </div>
   )

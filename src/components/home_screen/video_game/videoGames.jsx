@@ -1,5 +1,6 @@
 import React from "react";
 import VideoGameItem from "./videoGameItems";
+import '../../stylesheets/videoGame.css';
 
 const VideoGame = props => {
   const {array} = props;
