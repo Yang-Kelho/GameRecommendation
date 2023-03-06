@@ -1,8 +1,8 @@
-from flask import Flask
-from app import app
+from flask import Blueprint
+bp = Blueprint("community", __name__, url_prefix="/")
 
 
-@app.route("/post")
+@bp.route("/post")
 def get_post():
 
     return ""

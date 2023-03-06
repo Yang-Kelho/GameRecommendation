@@ -3,7 +3,6 @@ from flask import Blueprint
 
 from exts import mail
 from flask_mail import Message
-from app import app
 
 
 bp = Blueprint("user", __name__, url_prefix="/")
@@ -22,7 +21,7 @@ def info():
     return ""
 
 
-@app.route("/login")
+@bp.route("/login")
 def login():
     # prompt the user to log in and return whether success or not:
 

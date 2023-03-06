@@ -1,8 +1,9 @@
-from flask import Flask
-from app import app
+from flask import Blueprint
+
+bp = Blueprint("home", __name__, url_prefix="/")
 
 
-@app.route("/home")
+@bp.route("/home")
 def get_random():
 
     return ""
