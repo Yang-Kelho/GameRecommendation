@@ -1,0 +1,25 @@
+.saveScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: antiquewhite;
+}
+
+.savedGame {
+  padding: 4px;
+  border-radius: 8px;
+  display: flexbox;
+  align-items: center;
+  background-color: brown;
+}
+
+.savedGamesItem {
+  border-radius: 3px;
+  border: 3px;
+  margin: 30px;
+  background-color: blue;
+}
+.savedGamesItem img {
+  height: 18vh;
+  width: 24vw;
+}

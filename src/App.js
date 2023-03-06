@@ -2,8 +2,11 @@ import React from 'react';
 import HomeScreen from './components/home_screen/homeScreen';
 import SaveScreen from './components/saved_screen/saveScreen';
 import ListScreen from './components/list_screen/listScreen';
-import NavBar from './components/nav_bar/navBar';
 import CommunityScreen from './components/community_screen/communityScreen';
+import Profile from './components/nav_Profile/profile';
+import SearchResult from './components/home_screen/searchResult';
+
+import NavBar from './components/nav_bar/navBar';
 
 import './components/stylesheets/App.css';
 
@@ -23,7 +26,9 @@ const App = () => {
             <Route path='/home' element={<HomeScreen/>}/>
             <Route path='/saved' element={<SaveScreen/>}/>
             <Route path='/list' element={<ListScreen/>}/>
-            <Route path='/Community' element={<CommunityScreen/>}/>
+            <Route path='/community' element={<CommunityScreen/>}/>
+            <Route path='/profile' element={<Profile/>}/>
+            <Route path='/result' element={<SearchResult/>}/>
           </Routes>
         </div>
     </div>

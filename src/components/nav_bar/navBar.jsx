@@ -21,6 +21,11 @@ const NavBar = props => {
     navigate('/community');
   }
 
+  const toProfile = () => {
+    navigate('/profile');
+  }
+
+
   return (
     <nav className="navBar">
       <div>
@@ -46,7 +51,7 @@ const NavBar = props => {
 
       </div>
 
-      <div className="navProfile">
+      <div className="navProfile" onClick={toProfile}>
         <div>Username</div>
       </div>
     </nav> 
