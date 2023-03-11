@@ -5,12 +5,14 @@ from blueprints.game import bp as game_bp
 from blueprints.home import bp as home_bp
 from blueprints.list import bp as list_bp
 from blueprints.saved import bp as saved_bp
+from flask_cors import CORS
 
 from exts import mail
 import config
 
 
 app = Flask(__name__)
+CORS(app)
 mail.init_app(app)
 
 # register the blueprints
