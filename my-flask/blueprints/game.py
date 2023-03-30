@@ -9,11 +9,11 @@ bp = Blueprint("game", __name__, "/")
 def get_game(id):
     # search for games from the database
 
-    # 1. connect to the database
+    # todo: 1. connect to the database
 
-    # 2. retrieve from database
+    # todo: 2. retrieve from database
 
-    # 3. return the data
+    # todo: 3. return the data
     return jsonify({})
 
 
@@ -21,9 +21,10 @@ def get_game(id):
 def get_recommendation():
     # recommendation engine goes here, request with keywords: ?keywords=xxx
     keywords = request.args.get("keywords")
-    # 1. recommendation algorithm goes here:
+    # todo: 1. recommendation algorithm goes here:
+
     # keywords will be used as input for the algo
 
-    # X. return the result as json
+    # todo: X. return the result as json
 
     return jsonify({})
