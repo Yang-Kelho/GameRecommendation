@@ -3,9 +3,15 @@ import '../../stylesheets/videoGame.css';
 import Noita from './Noita.jpg';
 
 const VideoGameItem = dic => {
+  const handleClick = (key) => {
+    console.log(key);
+  }
+
   return (
-    <div className="videoGameItem">
-      <img src={Noita}/>
+    <div>
+      <div className="videoGameItem">
+        <img onClick={() => handleClick(dic.key)} src={Noita}/>
+      </div>
     </div>
   )
 }

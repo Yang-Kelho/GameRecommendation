@@ -6,11 +6,11 @@ const VideoGame = props => {
   const {array} = props;
   return (
     <div className="videoGame">
-        {array.map((num, i) => {
-          return (
-            <VideoGameItem key={i} props={props}/>
-          )
-        })}
+      {array.map((num, i) => {
+        return (
+          <VideoGameItem key={i} props={props}/>
+        )
+      })}
     </div>
   )
 }

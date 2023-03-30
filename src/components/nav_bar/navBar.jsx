@@ -1,10 +1,12 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 
+
 import '../stylesheets/navBar.css';
 
 const NavBar = props => {
   const navigate = useNavigate();
+
   const toSaved = () => {
     navigate('/saved');
   }
@@ -51,8 +53,8 @@ const NavBar = props => {
 
       </div>
 
-      <div className="navProfile" onClick={toProfile}>
-        <div>Username</div>
+      <div className="navProfile">
+        <button onClick={props.handlePopUp}>Username</button>
       </div>
     </nav> 
   ) 

@@ -25,7 +25,7 @@ const SearchBar = () => {
   return (
     <div className="searchBar">
       <div>
-        <input type="text" onChange={handleChange("title")} value={title}/>
+        <input className="searchTitle" type="text" onChange={handleChange("title")} value={title}/>
       </div>
 
       <div>
