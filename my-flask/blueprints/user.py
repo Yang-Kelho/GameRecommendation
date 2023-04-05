@@ -4,37 +4,38 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from pymongo import MongoClient
 
 client = MongoClient("mongodb+srv://xtang10:tang123456@gamerecom.yyg15zm.mongodb.net/?retryWrites=true&w=majority")
-db = client.gettingStarted
-# import the user collection:
-user = db.user
+userdb = client.gettingStarted.user
+user = userdb["user"]
+profile = userdb["profile"]
 
+'''
 from exts import mail
 from flask_mail import Message
-
+'''
 
 bp = Blueprint("user", __name__, url_prefix="/")
 
 
 @bp.route("/profile")
-def profile():
+def profile(username):
     # request user profile
-    # todo: 1. connect to the database(MongoDB)
+    user_id = session.get("user_id")
+    if user_id:
+        user_profile = profile.find_one({"_id": user_id})
+    else:
+        return jsonify({"status": 0})
 
-    # todo: 2. determine if the user has logged in or not
-
-    # todo: 3. retrieve from the database
-
-    # todo: 4. return the data as json
-    return ""
+    # return the user profile to the front end
+    return jsonify(user_profile)
 
 
 @bp.route("/login", methods=['POST'])
 def login():
 
-    # todo: 1. get username and password from client
+    # 1. get username and password from client
     form = LoginForm(request.form)
 
-    # todo: 2. validate
+    # 2. validate
     if form.validate():
         username = form.username.data
         password = form.password.data
@@ -42,35 +43,34 @@ def login():
         if a_user:
             # user exist:
             if check_password_hash(a_user.get("password"), password):
-
-                print("login success!")
+                print("verification success!")
             else:
-                return jsonify({"result": False})
+                return jsonify({"result": 0})
         else:
-            return jsonify({"result": False})
+            return jsonify({"result": 0})
 
-    # todo: 3. set session, only if the validation pass
+    # set session, only if the validation pass
     session['user_id'] = a_user.get("_id")
-    # todo: 4. return true if success, else false
-    return jsonify({"result": True})
+    # return true if success, else false
+    return jsonify({"result": 1})
 
 
 @bp.route("/register", methods=['POST'])
 def register():
 
-    # todo: form validation
+    # form validation
     form = RegisterForm(request.form)
     if form.validate():
-        # todo: if success, insert the data into the db:
+        # if success, insert the data into the db:
         email = form.email.data
         username = form.username.data
         password = form.password.data
         password = generate_password_hash(password)  # encrypt the password
         user.insert_one({"username": username, "password" : password, "email": email})
 
-        return jsonify({"result": True})
+        return jsonify({"result": 1})
     else:
-        return jsonify({"result": False})
+        return jsonify({"result": 0})
 
 
 """

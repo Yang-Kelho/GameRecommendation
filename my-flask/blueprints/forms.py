@@ -4,18 +4,23 @@ from wtforms.validators import Email, Length, EqualTo
 from pymongo import MongoClient
 
 client = MongoClient("mongodb+srv://xtang10:tang123456@gamerecom.yyg15zm.mongodb.net/?retryWrites=true&w=majority")
-db = client.gettingStarted
+userdb = client.gettingStarted.user
 # import the user collection:
-user = db.user
+user = userdb["user"]
+
 
 
 class RegisterForm(wtforms.Form):
     # email:
     email = wtforms.StringField(validators=[Email(message="Incorrect email format")])
     # username:
-    username = wtforms.StringField(validators=[Length(min=6, max=20, message="Username length should be between 4 - 20")])
+    username = wtforms.StringField(
+        validators=[Length(min=6, max=20, message="Username length should be between 4 - 20")]
+    )
     # password:
-    password = wtforms.StringField(validators=[Length(min=6, max=20, message="Password length should be between 4 - 20")])
+    password = wtforms.StringField(
+        validators=[Length(min=6, max=20, message="Password length should be between 4 - 20")]
+    )
     # re-enter password
     re_enter_password = wtforms.StringField(validators=[EqualTo("password")])
 
@@ -39,6 +44,10 @@ class RegisterForm(wtforms.Form):
 
 class LoginForm(wtforms.Form):
     # username:
-    username = wtforms.StringField(validators=[Length(min=6, max=20, message="Username length should be between 4 - 20")])
+    username = wtforms.StringField(
+        validators=[Length(min=6, max=20, message="Username length should be between 4 - 20")]
+    )
     # password:
-    password = wtforms.StringField(validators=[Length(min=6, max=20, message="Password length should be between 4 - 20")])
+    password = wtforms.StringField(
+        validators=[Length(min=6, max=20, message="Password length should be between 4 - 20")]
+    )
