@@ -3,6 +3,7 @@ from .forms import RegisterForm, LoginForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from pymongo import MongoClient
 
+
 client = MongoClient("mongodb+srv://xtang10:tang123456@gamerecom.yyg15zm.mongodb.net/?retryWrites=true&w=majority")
 userdb = client.gettingStarted.user
 user = userdb["user"]
@@ -17,16 +18,14 @@ bp = Blueprint("user", __name__, url_prefix="/")
 
 
 @bp.route("/profile")
-def profile(username):
+def profile():
     # request user profile
     user_id = session.get("user_id")
     if user_id:
         user_profile = profile.find_one({"_id": user_id})
+        return jsonify(user_profile)
     else:
         return jsonify({"status": 0})
-
-    # return the user profile to the front end
-    return jsonify(user_profile)
 
 
 @bp.route("/login", methods=['POST'])

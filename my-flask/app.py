@@ -27,7 +27,7 @@ app.config.from_object(config)
 @app.route("/test", methods=['GET', 'POST'])
 def test_req():
 
-    return jsonify({"test":"data", "test2":"data2"})
+    return jsonify({"test": "data", "test2": "data2"})
 
 
 if __name__ == '__main__':
