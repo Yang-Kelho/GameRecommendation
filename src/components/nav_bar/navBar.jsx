@@ -1,10 +1,12 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 
+
 import '../stylesheets/navBar.css';
 
 const NavBar = props => {
   const navigate = useNavigate();
+
   const toSaved = () => {
     navigate('/saved');
   }
@@ -20,6 +22,11 @@ const NavBar = props => {
   const toCommunity = () => {
     navigate('/community');
   }
+
+  const toProfile = () => {
+    navigate('/profile');
+  }
+
 
   return (
     <nav className="navBar">
@@ -47,7 +54,7 @@ const NavBar = props => {
       </div>
 
       <div className="navProfile">
-        <div>Username</div>
+        <button onClick={props.handlePopUp}>Username</button>
       </div>
     </nav> 
   ) 

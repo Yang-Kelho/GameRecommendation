@@ -5,3 +5,14 @@
   margin: 10px;
   padding: 10px;
 }
+
+.searchTitle {
+  width: 600px;
+  height: 45px;
+  border-radius: 5px;
+  background-color: #badcff;
+  border: black;
+  margin-left: 8px;
+  color: #f5f6f7;
+  padding-left: 10px;
+}
