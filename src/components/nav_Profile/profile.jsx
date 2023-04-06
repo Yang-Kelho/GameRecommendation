@@ -4,6 +4,7 @@ import UserPostListing from "./user_display/userPostListing";
 
 const Profile = (props) => {
   const { userId, currentUserId, fetchUser } = props;
+
   return(
     <div>
       <div className="profileButtons">

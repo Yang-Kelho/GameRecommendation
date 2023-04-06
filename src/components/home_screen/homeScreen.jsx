@@ -8,7 +8,7 @@ const HomeScreen = () => {
   return ( 
     <div className="homeScreen">
       <SearchBar/>
-      <VideoGame array={array}/>
+      <VideoGame videoGameArray={array}/>
     </div>
   )
 }

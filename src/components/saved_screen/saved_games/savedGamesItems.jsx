@@ -7,6 +7,7 @@ const SavedGamesItems = dic => {
   return(
     <div className="savedGamesItem">
       <img src={Slime_Rancher}/>
+      <h1>{dic.key}</h1>
     </div>
   )
 }
