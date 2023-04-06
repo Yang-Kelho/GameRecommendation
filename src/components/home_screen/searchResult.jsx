@@ -16,9 +16,9 @@ const SearchResult = () => {
 
   return (
     <div>
-      <div onClick={handleClick}>
+      <button onClick={handleClick}>
         {"Search Results"}
-      </div>
+      </button>
     </div>
   )
 }

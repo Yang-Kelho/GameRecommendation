@@ -16,17 +16,18 @@ from flask_mail import Message
 bp = Blueprint("user", __name__, url_prefix="/")
 
 
-@bp.route("/profile")
-def profile(username):
+@bp.route("/profile", methods=['GET'])
+def profile():
     # request user profile
     user_id = session.get("user_id")
     if user_id:
         user_profile = profile.find_one({"_id": user_id})
+        # return the user profile to the front end
+        return jsonify(user_profile)
     else:
         return jsonify({"status": 0})
 
-    # return the user profile to the front end
-    return jsonify(user_profile)
+
 
 
 @bp.route("/login", methods=['POST'])

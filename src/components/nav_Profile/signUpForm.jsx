@@ -5,6 +5,19 @@ import { useEffect } from "react";
 
 const LoginForm = () => {
 
+  const handleClick = () => {
+    $.ajax({
+    url:"http://127.0.0.1:5000/profile",
+    type: 'GET',
+    xhrFields: {withCredentials: true}, 
+    crossDomain: true,
+    dataType: 'json',
+    success : (data) => {
+      console.log(data);
+    }
+  });
+  }
+
   const [ state, setState ] = useState({
     email: "",
     password: ""
@@ -25,7 +38,7 @@ const LoginForm = () => {
     <div className="PopUpLogin">
       <input type="text" value={state.email} placeholder="Email" onChange={handleChange("email")}/>   
       <input type="text" value={state.password} placeholder="Password" onChange={handleChange("password")}/>
-      <button> Submit </button>
+      <button onClick={handleClick}> Submit </button>
     </div>
   )
 }
