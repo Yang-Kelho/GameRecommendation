@@ -1,14 +1,14 @@
 import React from "react";
-import VideoGameItem from "./videoGameItems";
+import VideoGameItem from "./videoGameItem";
 import '../../stylesheets/videoGame.css';
 
 const VideoGame = props => {
-  const {array} = props;
+  const {videoGameArray} = props;
   return (
     <div className="videoGame">
-      {array.map((num, i) => {
+      {videoGameArray.map((num) => {
         return (
-          <VideoGameItem key={i} props={props}/>
+          <VideoGameItem key={num} props={props}/>
         )
       })}
     </div>

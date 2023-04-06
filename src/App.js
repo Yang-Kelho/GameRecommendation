@@ -36,9 +36,7 @@ const App = () => {
       </div>
         <div className="appEverythingElse">
           <Routes>
-            <Route path='/' element={
-                <HomeScreen/>
-            }/>
+            <Route path='/' element={<HomeScreen/>}/>
             <Route path='/home' element={<HomeScreen/>}/>
             <Route path='/saved' element={<SaveScreen/>}/>
             <Route path='/list' element={<ListScreen/>}/>

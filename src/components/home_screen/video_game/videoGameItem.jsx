@@ -1,16 +1,17 @@
 import React from "react";
 import '../../stylesheets/videoGame.css';
 import Noita from './Noita.jpg';
+import VideoGameItemDetails from "./videoGameItemDetails";
 
-const VideoGameItem = dic => {
-  const handleClick = (key) => {
-    console.log(key);
+const VideoGameItem = props => {
+  const handleClick = () => {
+    return (<VideoGameItemDetails/>);
   }
 
   return (
     <div>
       <div className="videoGameItem">
-        <img onClick={() => handleClick(dic.key)} src={Noita}/>
+        <img onClick={() => handleClick()} src={Noita}/>
       </div>
     </div>
   )
