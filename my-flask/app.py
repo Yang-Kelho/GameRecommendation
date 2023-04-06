@@ -5,6 +5,10 @@ from blueprints.community import bp as community_bp
 from blueprints.game import bp as game_bp
 from blueprints.home import bp as home_bp
 from blueprints.list import bp as list_bp
+
+
+from flask_cors import CORS
+
 from exts import mail
 import config
 
@@ -27,11 +31,11 @@ app.config.from_object(config)
 @app.route("/test", methods=['GET', 'POST'])
 def test_req():
 
-    return jsonify({"test":"data", "test2":"data2"})
+  return jsonify({"test":"data", "test2":"data2"})
 
 
 if __name__ == '__main__':
-    app.run()
+  app.run()
 
 
 

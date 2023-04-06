@@ -1,5 +1,6 @@
 import {React, useState} from "react";
 import '../stylesheets/searchBar.css';
+import { useNavigate } from 'react-router-dom';
 
 const SearchBar = () => {
   const [state, setState] = useState({
@@ -8,8 +9,10 @@ const SearchBar = () => {
   });
   const { title, keywords } = state;
   // Use the above function later to make search bar
+  const navigate = useNavigate();
   const handleClick = () => {
     console.log(state);
+    navigate('/result');
   }
 
   const handleChange = query => {
@@ -22,17 +25,17 @@ const SearchBar = () => {
   return (
     <div className="searchBar">
       <div>
-        <input type="text" onChange={handleChange("title")} value={title}/>
+        <input className="searchTitle" type="text" onChange={handleChange("title")} value={title} placeholder="Title"/>
       </div>
 
       <div>
-        <textarea onChange={handleChange("keywords")} value={keywords} cols="30" rows="10"></textarea>
-      </div>
+        <textarea onChange={handleChange("keywords")} value={keywords} cols="30" rows="10" placeholder="Type in keywords (genres, tags, developers, etc.)"></textarea>
+      </div>  
 
       <div>
-        <div onClick={handleClick}>
+        <button onClick={handleClick}>
           search
-        </div>
+        </button>
       </div>
     </div>
   )
