@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from 'react-router-dom';
 
 
-import '../stylesheets/navBar.css';
+import '../stylesheets/navBar.scss';
 
 const NavBar = props => {
   const navigate = useNavigate();

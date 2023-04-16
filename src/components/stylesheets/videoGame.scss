@@ -1,0 +1,20 @@
+.videoGame {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  width: 100%;
+  overflow: scroll;
+  align-items: center;
+  justify-content: center;
+
+  .videoGameItem {
+    padding: 4px;
+    margin: 10px 5px;
+  
+    img{
+      height: 10vh;
+      width: 20vh;
+      object-fit: cover;
+    }
+  }
+}

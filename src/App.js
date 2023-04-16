@@ -23,12 +23,13 @@ const App = () => {
       ...state,
       popUp: !state.popUp
     })
+    console.log(!state.popUp)
   }
 
   return (
     <div className='app'>
       {
-        state.popUp ? (<LoginForm/>) : null
+        state.popUp ? (<LoginForm handlePopUp={handlePopUp}/>) : null
       }
 
       <div className='appNavBar'>
