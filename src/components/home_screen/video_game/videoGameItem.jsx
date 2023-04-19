@@ -1,5 +1,5 @@
 import React from "react";
-import '../../stylesheets/videoGame.css';
+import '../../stylesheets/videoGame.scss';
 import Noita from './Noita.jpg';
 import VideoGameItemDetails from "./videoGameItemDetails";
 

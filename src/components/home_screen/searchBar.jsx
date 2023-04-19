@@ -1,5 +1,5 @@
 import {React, useState} from "react";
-import '../stylesheets/searchBar.css';
+import '../stylesheets/searchBar.scss';
 import { useNavigate } from 'react-router-dom';
 
 const SearchBar = () => {
@@ -16,6 +16,7 @@ const SearchBar = () => {
   }
 
   const handleChange = query => {
+    console.log(state)
     return e => setState({
       ...state,
       [query]: e.currentTarget.value
