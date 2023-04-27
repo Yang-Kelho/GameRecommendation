@@ -3,7 +3,7 @@ import $ from "jquery";
 
 const handleClick = () => {
   $.ajax({
-  url:"http://127.0.0.1:5000/test",
+  url:"http://127.0.0.1:5000/profile",
   type: 'GET',
   dataType: 'json',
   success : (data) => {

@@ -9,7 +9,6 @@ userdb = client.gettingStarted.user
 user = userdb["user"]
 
 
-
 class RegisterForm(wtforms.Form):
     # email:
     email = wtforms.StringField(validators=[Email(message="Incorrect email format")])

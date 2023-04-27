@@ -28,8 +28,6 @@ def profile():
         return jsonify({"status": 0})
 
 
-
-
 @bp.route("/login", methods=['POST'])
 def login():
 
