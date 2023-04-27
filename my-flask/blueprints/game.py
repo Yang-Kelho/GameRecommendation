@@ -28,14 +28,14 @@ def get_game_rec_by_name(gamename):
 
 # recommendation engine: based on user input, input are name
 @bp.route("/search")
-def get_recommendation():
+def get_game():
     # recommendation engine goes here, request with keywords: ?keywords=xxx
     keywords = request.args.get("keywords")
-    # todo: 1. recommendation algorithm goes here:
-
+    # search the game db by name: keyword = game name:
+    result = games.find_one({"name": keywords})
     # todo: X. return the result as json
-
-    return jsonify({})
+    del result['_id']
+    return jsonify(result)
 
 
 # filter and get a list of games based on attributes (popularity)
