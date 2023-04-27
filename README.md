@@ -78,6 +78,6 @@ Flask-Cors\
 Flask-Mail\
 Flask-WTF\
 pymongo\
-WTForms\
+WTForms
 
 After downloaing all the required libraries, you should be able to run the server.
