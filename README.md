@@ -72,12 +72,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 # Flask Setup
 
 ### library required
-email-validator
-Flask
-Flask-Cors
-Flask-Mail
-Flask-WTF
-pymongo
-WTForms
+email-validator\
+Flask\
+Flask-Cors\
+Flask-Mail\
+Flask-WTF\
+pymongo\
+WTForms\
 
 After downloaing all the required libraries, you should be able to run the server.
