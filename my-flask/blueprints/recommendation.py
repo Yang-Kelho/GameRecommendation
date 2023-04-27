@@ -6,10 +6,8 @@ class Recommendation:
     file = open('resources/keyword-matrix.json')
     file2 = open('resources/gameNamesToIDs.json')
 
-
     matrix = json.load(file)
     matrix = np.array(matrix)
-
     df = json.load(file2)
 
     def get_most_similar(self, cosineArray):

@@ -8,6 +8,7 @@ client = MongoClient("mongodb+srv://Chromato:Cookiejar34@masterproject.4stlgqr.m
 db = client['vgrec']
 games = db["games"]
 
+
 # game id look up: return a json file
 @bp.route("/<int:id>")
 def get_game_by_id(id):
@@ -16,6 +17,7 @@ def get_game_by_id(id):
     # pop the id
     del result['_id']
     return jsonify(result)
+
 
 # game name look up: return a json file:
 @bp.route("/<string:gamename>")
