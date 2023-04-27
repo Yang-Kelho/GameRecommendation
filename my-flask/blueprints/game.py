@@ -26,6 +26,8 @@ def get_game_rec_by_name(gamename):
     print(gamename)
     rec = Recommendation()
     result = Recommendation.content_based_rec_by_name(rec,gamename)
+    for x in result:
+        print(x)
     return jsonify(result)
 
 

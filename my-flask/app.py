@@ -11,6 +11,9 @@ from flask_cors import CORS
 from exts import mail
 import config
 
+import os
+from flask import send_from_directory
+
 app = Flask(__name__)
 CORS(app)
 mail.init_app(app)
@@ -29,6 +32,11 @@ app.config.from_object(config)
 @app.route("/test", methods=['GET', 'POST'])
 def test_req():
     return jsonify({"test": "data", "test2": "data2"})
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
 if __name__ == '__main__':
