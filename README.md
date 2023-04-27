@@ -80,4 +80,4 @@ Flask-WTF\
 pymongo\
 WTForms
 
-After downloaing all the required libraries, you should be able to run the server.
+After downloading all the required libraries, you should be able to run the server.
