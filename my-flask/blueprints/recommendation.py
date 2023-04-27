@@ -3,8 +3,8 @@ import numpy as np
 
 
 class Recommendation:
-    file = open('resources/keyword-matrix.json')
-    file2 = open('resources/gameNamesToIDs.json')
+    file = open('my-flask/resources/keyword-matrix.json')
+    file2 = open('my-flask/resources/gameNamesToIDs.json')
 
     matrix = json.load(file)
     matrix = np.array(matrix)

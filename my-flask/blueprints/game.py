@@ -1,6 +1,7 @@
 from flask import request, jsonify, Blueprint
 from pymongo import MongoClient
 from .recommendation import Recommendation
+import json
 
 
 bp = Blueprint("game", __name__, "/")
