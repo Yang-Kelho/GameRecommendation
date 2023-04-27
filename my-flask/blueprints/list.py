@@ -9,7 +9,7 @@ list_collection = userdb["list"]
 
 
 @bp.route("/list")
-def get_recommend_list():
+def get_list():
     # retrieve from the database:
     game_list = list_collection.find().limit(10)
     if game_list:
@@ -26,6 +26,10 @@ def get_recommend_list():
 
 @bp.route("/mylist")
 def get_my_list():
+    """
+    use user id to get all the user made game list
+    :return:
+    """
     # get the user id if logged in:
     user_id = session.get("user_id")
     obj_id = ObjectId(user_id)
@@ -42,5 +46,10 @@ def get_my_list():
 # retrieve saved list from the user:
 @bp.route("/saved")
 def get_saved():
-
+    """
+    base on user id to get all games saved by the user,
+    the user table will contain a field called save with an array of game id
+    retrieve that and use that to retrieve all saved games
+    :return:
+    """
     return jsonify({})
