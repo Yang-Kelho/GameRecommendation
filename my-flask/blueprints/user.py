@@ -3,6 +3,7 @@ from .forms import RegisterForm, LoginForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from pymongo import MongoClient
 
+
 client = MongoClient("mongodb+srv://xtang10:tang123456@gamerecom.yyg15zm.mongodb.net/?retryWrites=true&w=majority")
 userdb = client.gettingStarted.user
 user = userdb["user"]
@@ -16,13 +17,20 @@ from flask_mail import Message
 bp = Blueprint("user", __name__, url_prefix="/")
 
 
+<<<<<<< HEAD
 @bp.route("/profile", methods=['GET'])
+=======
+@bp.route("/profile")
+>>>>>>> flask
 def profile():
     # request user profile
     user_id = session.get("user_id")
     if user_id:
         user_profile = profile.find_one({"_id": user_id})
+<<<<<<< HEAD
         # return the user profile to the front end
+=======
+>>>>>>> flask
         return jsonify(user_profile)
     else:
         return jsonify({"status": 0})
