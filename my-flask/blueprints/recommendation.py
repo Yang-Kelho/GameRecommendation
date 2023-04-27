@@ -3,8 +3,8 @@ import numpy as np
 
 
 class Recommendation:
-    file = open('/Users/izury/PycharmProjects/GameRecommendation/my-flask/resources/keyword-matrix.json')
-    file2 = open('/Users/izury/PycharmProjects/GameRecommendation/my-flask/resources/gameNamesToIDs.json')
+    file = open('resources/keyword-matrix.json')
+    file2 = open('resources/gameNamesToIDs.json')
 
 
     matrix = json.load(file)
@@ -18,7 +18,7 @@ class Recommendation:
         print()
         for val in sorted(cosineArray, reverse=True)[1:11]:
             simIndex = list(cosineArray).index(val)
-            gameNames.append(self.df['name'].values[simIndex])
+            gameNames.append(list(self.df.keys())[simIndex])
         return gameNames
 
     def content_based_rec_by_name(self, gameName):
@@ -37,6 +37,6 @@ class Recommendation:
         except ValueError:
             print("Game ID not found.")
         else:
-            print(f"10 most similar games to {self.df['name'].values[gameIndex]}, according to genre and tags:")
+            print(f"10 most similar games to {list(self.df.values())[gameIndex]}, according to genre and tags:")
             cosine_array = self.matrix[gameIndex]
             return self.get_most_similar(cosine_array)
