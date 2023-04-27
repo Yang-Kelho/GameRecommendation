@@ -8,7 +8,8 @@ const LoginForm = props => {
   const { handlePopUp } = props;
   const [ state, setState ] = useState({
     email: "",
-    password: ""
+    password: "",
+    loggedIn: false
   })
   
   const handleChange = (field) => {

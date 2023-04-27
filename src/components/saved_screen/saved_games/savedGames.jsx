@@ -1,15 +1,15 @@
 import React from "react";
-import SavedGamesItems from "./savedGamesItems";
-import '../../stylesheets/savedScreen.css';
+import SavedGamesCard from "./savedGamesCard";
+import '../../stylesheets/savedScreen.scss';
 
 const SavedGames = (props) => {
   const {array} = props;
   return(
-    <div className="savedGame">
+    <div className="savedGameList">
         {array.map((num, i) => {
           return (
             <div>
-              <SavedGamesItems key={i} props={props}/>
+              <SavedGamesCard key={i} props={props}/>
             </div>
           )
         })}      

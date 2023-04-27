@@ -3,7 +3,7 @@ import { useState } from "react";
 import { signup } from "../../utils/Ajax";
 import { useEffect } from "react";
 
-const LoginForm = () => {
+const SignUpForm = () => {
 
   const handleClick = () => {
     $.ajax({
@@ -43,4 +43,4 @@ const LoginForm = () => {
   )
 }
 
-export default LoginForm;
+export default SignUpForm;

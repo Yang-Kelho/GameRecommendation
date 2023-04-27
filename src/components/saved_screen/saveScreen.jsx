@@ -1,7 +1,7 @@
 import React from "react";
 import SaveScreenTitle from "./saveScreenTitle";
 import SavedGames from "./saved_games/savedGames";
-import '../stylesheets/savedScreen.css';
+import '../stylesheets/savedScreen.scss';
 
 const SaveScreen = () => {
   const array = [1, 2, 3, 4]

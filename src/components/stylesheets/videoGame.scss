@@ -8,8 +8,15 @@
   justify-content: center;
 
   .videoGameItem {
+
+    &:hover {
+      filter: brightness(0.8);
+      cursor: pointer;
+    }
+    
     padding: 4px;
     margin: 10px 5px;
+    background-color: blue;
 
     img{
       height: 10vh;
