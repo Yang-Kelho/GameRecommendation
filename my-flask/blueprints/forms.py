@@ -14,11 +14,11 @@ class RegisterForm(wtforms.Form):
     email = wtforms.StringField(validators=[Email(message="Incorrect email format")])
     # username:
     username = wtforms.StringField(
-        validators=[Length(min=6, max=20, message="Username length should be between 4 - 20")]
+        validators=[Length(min=4, max=20, message="Username length should be between 4 - 20")]
     )
     # password:
     password = wtforms.StringField(
-        validators=[Length(min=6, max=20, message="Password length should be between 4 - 20")]
+        validators=[Length(min=4, max=20, message="Password length should be between 4 - 20")]
     )
     # re-enter password
     re_enter_password = wtforms.StringField(validators=[EqualTo("password")])
@@ -44,9 +44,9 @@ class RegisterForm(wtforms.Form):
 class LoginForm(wtforms.Form):
     # username:
     username = wtforms.StringField(
-        validators=[Length(min=6, max=20, message="Username length should be between 4 - 20")]
+        validators=[Length(min=4, max=20, message="Username length should be between 4 - 20")]
     )
     # password:
     password = wtforms.StringField(
-        validators=[Length(min=6, max=20, message="Password length should be between 4 - 20")]
+        validators=[Length(min=4, max=20, message="Password length should be between 4 - 20")]
     )

@@ -40,7 +40,9 @@ def login():
     # 2. validate
     if form.validate():
         username = form.username.data
+        print(username)
         password = form.password.data
+        print(password)
         a_user = users.find_one({"username": username})
         if a_user:
             # user exist:
