@@ -2,16 +2,16 @@ import React from "react";
 import { closeModal } from "../../utils/modal_actions";
 import LoginForm from "../nav_Profile/loginForm";
 import SignUpForm from "../nav_Profile/signUpForm";
-import VideoGameItemPopUp from "../home_screen/video_game/videoGameItemDetails";
+import VideoGameItemPopUp from "../home_screen/video_game/videoGameItemPopUp";
 
 const Modal = props => {
-  const { modal, closeModal } = props;
+  const { modal, handlePopUp, handleAppChange, gameID } = props;
 
   if (!modal) return null;
 
   let component;
 
-  switch (modal.type) {
+  switch (modal) {
     case "login":
       component = <LoginForm/>;
       break;
@@ -19,18 +19,17 @@ const Modal = props => {
       component = <SignUpForm/>;
       break;
     case "game":
-      component = <VideoGameItemPopUp/>;
+      component = <VideoGameItemPopUp gameID={gameID}/>;
       break;
     default:
       return null;
   }
 
-  const reset = () => {
-    closeModal();
-  }
-
   return (
-    <div className="blackscreen" onClick={reset}/>
+    <div>
+      <div className="blackscreen" onClick={handlePopUp}/>
+      {component}
+    </div>
   )
 }
 

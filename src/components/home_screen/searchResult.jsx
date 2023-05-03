@@ -7,6 +7,7 @@ const handleClick = () => {
   type: 'GET',
   dataType: 'json',
   success : (data) => {
+    
     console.log(data);
   }
 });

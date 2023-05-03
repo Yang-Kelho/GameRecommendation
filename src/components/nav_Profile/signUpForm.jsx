@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { signup } from "../../utils/Ajax";
 import { useEffect } from "react";
+import $ from "jquery";
 
 const SignUpForm = () => {
 

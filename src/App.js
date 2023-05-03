@@ -8,6 +8,7 @@ import SearchResult from './components/home_screen/searchResult';
 import NavBar from './components/nav_bar/navBar';
 import LoginForm from './components/nav_Profile/loginForm';
 import { useState } from "react";
+import Modal from './components/modal/modal';
 
 import './components/stylesheets/App.css';
 
@@ -15,7 +16,9 @@ import { Route, Router, Routes, Navigate } from 'react-router-dom';
 
 const App = () => {
   const [ state, setState ] = useState({
-    popUp: false
+    popUp: false,
+    modal: "",
+    gameID: "",
   });
 
   const handlePopUp = () => {
@@ -23,13 +26,23 @@ const App = () => {
       ...state,
       popUp: !state.popUp
     })
-    console.log(!state.popUp);
+    console.log(state)
+  }
+
+  const handleAppChange = (field, value) => {
+    setState({
+      ...state,
+      popUp: !state.popUp,
+      [field]: value
+    })
+    console.log("appchange")
+    console.log(state)
   }
 
   return (
     <div className='app'>
       {
-        state.popUp ? (<LoginForm handlePopUp={handlePopUp}/>) : null
+        state.popUp ? (<Modal modal={state.modal} handlePopUp={handlePopUp} handleAppChange={handleAppChange} gameID={state.gameID}/>) : null
       }
 
       <div className='appNavBar'>
@@ -37,7 +50,7 @@ const App = () => {
       </div>
         <div className="appEverythingElse">
           <Routes>
-            <Route path='/' element={<HomeScreen/>}/>
+            <Route path='/' element={<HomeScreen handlePopUp={handlePopUp} handleAppChange={handleAppChange}/>}/>
             <Route path='/home' element={<HomeScreen/>}/>
             <Route path='/saved' element={<SaveScreen/>}/>
             <Route path='/list' element={<ListScreen/>}/>

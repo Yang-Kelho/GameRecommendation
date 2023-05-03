@@ -1,20 +1,22 @@
 import React from "react";
 import '../../stylesheets/videoGame.scss';
 import Noita from './Noita.jpg';
-import VideoGameItemDetails from "./videoGameItemDetails";
 
 const VideoGameItem = props => {
-  const handleClick = () => {
-    return (<VideoGameItemDetails/>);
-  }
+  const { handlePopUp, handleAppChange } = props; 
 
+  const handleClick = (gameID) => {
+    handleAppChange("gameID", gameID)
+    handleAppChange("modal", "game")
+    console.log('dttteyeytyeyy')
+  }
   return (
-    <div>
-      <div className="videoGameItem">
-        <img onClick={() => handleClick()} src={Noita}/>
+    <div onClick={() => handleClick("10")}>
+      <div className="videoGameItem" >
+        <img src={Noita}/>
       </div>
     </div>
   )
 }
 
-export default VideoGameItem
+export default VideoGameItem 
