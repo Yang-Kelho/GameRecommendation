@@ -1,6 +1,8 @@
 import React from "react";
 import $ from "jquery";
 import { useState, useEffect } from "react";
+import '../../stylesheets/modal.scss';
+import Screenshot from "./screenshot";
 
 const VideoGameItemPopUp = (id) => {
   const [ state, setState ] = useState({
@@ -9,6 +11,9 @@ const VideoGameItemPopUp = (id) => {
     categories: "",
     developers: "",
     genres: "",
+    description: "",
+    header_image: "",
+    screenshots: "",
   })
 
   useEffect(() => {
@@ -25,29 +30,51 @@ const VideoGameItemPopUp = (id) => {
           categories: data.categories,
           developers: data.developers,
           genres: data.genres,
+          description: data.detailed_description,
+          header_image: data.header_image,
+          screenshots: data.screenshots,
         })
       }
     })
   }, [])
+  let screenshots = [];
+  const displayScreenshots = () => {
+    for (let i = 0; i < state.screenshots.length; i++) {
+      screenshots.push(state.screenshots[i]);
+    }
+    console.log(screenshots);
+    return screenshots;
+  }
   return (
-    <div>
-      <div>
-        <h1> {state.id} </h1>
-        
+    <div className="PopUpGame">
+      <div className="vgipuCoverImg">
+        <img src={state.header_image}/>
       </div>
-
-      <div>
-        <h1>{state.name}</h1>
-        <div>
-          Tags: {state.tags}
-          Description:
+      <div className="vgipuData">
+        <h1 className="title">{state.name}</h1>
+        <div className="">
+          <span> 
+            <h1> Tags: {state.categories} </h1>
+            <h1> Description: {state.description} </h1>
+          </span>
           <a>Link</a>
         </div>
       </div>
 
-      <div>
+      <div className="vgipuScreenshotContainer">
         <h1>Screenshots</h1>
-        {/* array of images*/}
+        <div className="vgipuScreenshots">
+          {
+            displayScreenshots()
+          }
+          {
+            screenshots.map((idx) => {
+              return (
+                <Screenshot image={state.screenshots[idx]} />
+              )
+            })
+          }
+        </div>
       </div>
 
       <div>

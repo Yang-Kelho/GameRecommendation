@@ -1,6 +1,6 @@
 import React from "react";
 import SearchBar from "./searchBar";
-import VideoGame from "./video_game/videoGames";
+import VideoGames from "./video_game/videoGames";
 import '../stylesheets/homeScreen.scss';
 
 const HomeScreen = (props) => {
@@ -8,7 +8,7 @@ const HomeScreen = (props) => {
   return ( 
     <div className="homeScreen">
       <SearchBar/>
-      <VideoGame handlePopUp={props.handlePopUp} handleAppChange={props.handleAppChange} videoGameArray={array}/>
+      <VideoGames handlePopUp={props.handlePopUp} handleAppChange={props.handleAppChange} videoGameArray={array}/>
     </div>
   )
 }

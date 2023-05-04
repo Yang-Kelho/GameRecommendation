@@ -1,10 +1,18 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
-
-
+import home_icon from '../sprites/icons/home_icon.png';
+import saved_icon from '../sprites/icons/saved_icon.png';
+import list_icon from '../sprites/icons/list_icon.png';
+import community_icon from '../sprites/icons/community_icon.png';
 import '../stylesheets/navBar.scss';
 
 const NavBar = props => {
+  const { handlePopUp, handleAppChange } = props;
+  const handleChange = () => {
+    handlePopUp();
+    handleAppChange("modal", "login");
+  }
+
   const navigate = useNavigate();
 
   const toSaved = () => {
@@ -23,9 +31,7 @@ const NavBar = props => {
     navigate('/community');
   }
 
-  const toProfile = () => {
-    navigate('/profile');
-  }
+
 
 
   return (
@@ -38,23 +44,23 @@ const NavBar = props => {
 
         <div className="navButtonContainer">
           <div className="navHome">
-            <button onClick={toHome}> Home </button>
+            <button onClick={toHome}> <img src={home_icon} alt=""/> Home </button>
           </div>
           <div className="navSaved">
-            <button onClick={toSaved}> Saved </button>
+            <button onClick={toSaved}> <img src={saved_icon} alt=""/> Saved </button>
           </div>
           <div className="navList">
-            <button onClick={toList}> List </button>
+            <button onClick={toList}> <img src={list_icon} alt=""/> List </button>
           </div>
           <div className="navCommunity">
-            <button onClick={toCommunity}> Community </button>
+            <button onClick={toCommunity}> <img src={community_icon} alt=""/> Community </button>
           </div>
         </div>
 
       </div>
 
       <div className="navProfile">
-        <button onClick={props.handlePopUp}>Username</button>
+        <button onClick={handleChange}>Username</button>
       </div>
     </nav> 
   ) 

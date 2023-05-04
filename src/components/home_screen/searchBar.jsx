@@ -6,8 +6,9 @@ import $ from "jquery";
 const SearchBar = () => {
   const [state, setState] = useState({
     title: "",
+    headerURL: "", 
   });
-  const { title, keywords } = state;
+  
   // Use the above function later to make search bar
   const navigate = useNavigate();
   const handleClick = () => {
@@ -15,9 +16,13 @@ const SearchBar = () => {
     $.ajax({
       url:"http://127.0.0.1:5000/search",
       type: 'GET',
-      data : {keywords : 'game-name'},
+      data : {keywords : state.title},
       dataType: 'json',
       success : (data) => {
+        setState({
+          ...state,
+          headerURL: data.headerURL
+        })
         console.log(data);
       }
     });
@@ -34,7 +39,7 @@ const SearchBar = () => {
   return (
     <div className="searchBar">
       <div>
-        <input className="searchTitle" type="text" onChange={handleChange("title")} value={title} placeholder="Title"/>
+        <input className="searchTitle" type="text" onChange={handleChange("title")} value={state.title} placeholder="Title"/>
       </div>
 
       <div>
