@@ -1,13 +1,13 @@
 from flask import Blueprint, jsonify
 from pymongo import MongoClient
-bp = Blueprint("community", __name__, url_prefix="/")
+bp = Blueprint("community", __name__, url_prefix="/post")
 
 client = MongoClient("mongodb+srv://xtang10:tang123456@gamerecom.yyg15zm.mongodb.net/?retryWrites=true&w=majority")
 userdb = client['user']
 post = userdb["post"]
 
 
-@bp.route("/post/<int:number>")
+@bp.route("/<int:number>")
 def get_post(number):
     """
     get all the post from the database, limited to 10 so far
@@ -28,4 +28,4 @@ def get_post(number):
         return jsonify(posts)
     else:
         # if nothing found, return 0
-        return jsonify({'result': 0})
+        return jsonify({'result': False, 'message': 'No post found'})

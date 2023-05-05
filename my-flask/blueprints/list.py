@@ -3,6 +3,8 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 
 bp = Blueprint("list", __name__, url_prefix="/")
+
+# database connection
 client = MongoClient("mongodb+srv://xtang10:tang123456@gamerecom.yyg15zm.mongodb.net/?retryWrites=true&w=majority")
 userdb = client['user']
 list_collection = userdb["list"]
@@ -21,17 +23,17 @@ def get_list():
         return jsonify(game)
     else:
         # if nothing found, return 0
-        return jsonify({'result': 0})
+        return jsonify({'result': False, 'message': 'No list yet...'})
 
 
 @bp.route("/mylist")
 def get_my_list():
-    """
-    use user id to get all the user made game list
-    :return:
-    """
     # get the user id if logged in:
-    user_id = session.get("user_id")
+    if 'user_id' in session:
+        user_id = session['user_id']
+    else:
+        return jsonify({'result': False, 'message': 'Please login first!'})
+
     obj_id = ObjectId(user_id)
     # find it in the database:
     my_list = list_collection.find({"user_id": obj_id})
@@ -40,16 +42,5 @@ def get_my_list():
         jsonify(my_list)
     else:
         # if nothing found, return 0
-        return jsonify({"result": 0})
+        return jsonify({"result": False, 'message': 'The list is empty'})
 
-
-# retrieve saved list from the user:
-@bp.route("/saved")
-def get_saved():
-    """
-    base on user id to get all games saved by the user,
-    the user table will contain a field called save with an array of game id
-    retrieve that and use that to retrieve all saved games
-    :return:
-    """
-    return jsonify({})
