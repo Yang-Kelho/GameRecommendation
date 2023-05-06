@@ -45,6 +45,8 @@ const VideoGameItemPopUp = (id) => {
     console.log(screenshots);
     return screenshots;
   }
+  displayScreenshots();
+
   return (
     <div className="PopUpGame">
       <div className="vgipuCoverImg">
@@ -65,12 +67,9 @@ const VideoGameItemPopUp = (id) => {
         <h1>Screenshots</h1>
         <div className="vgipuScreenshots">
           {
-            displayScreenshots()
-          }
-          {
             screenshots.map((idx) => {
               return (
-                <Screenshot image={state.screenshots[idx]} />
+                <Screenshot image={idx} />
               )
             })
           }

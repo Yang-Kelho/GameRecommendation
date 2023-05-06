@@ -1,20 +1,16 @@
 .searchBar {
-  display: contents;
-  justify-content: center;
-  background-color: lavender;
+  display: flex;
   margin: 10px;
   padding: 10px;
-
+  justify-content: center;
+  align-items: center;
   .searchTitle {
-    color: black;
     text-align: center;
-    margin-top: 30px;
     width: 400px;
     height: 45px;
     border-width: 1px;
     border-radius: 10px;
     background-color: white;
-    padding-left: 10px;
     padding: 5px 15px;
     font-size: 24px;
 
@@ -28,25 +24,10 @@
     }
   }
 
-  textarea{
-    width: 600px;
-    margin-top: 30px;
-    border-radius: 10px;
-    padding: 5px 15px;
-
-    &::placeholder{
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      text-align: center;
-    }
-
-    &:hover{
-      filter: brightness(0.8);
-    }
-  }
-
   button{
-    margin: 15px 0;
-    padding: 15px 35px;
+    width: 80px;
+    height: 60px;
+    margin: 10px;
     border-radius: 15px;
 
     &:hover{

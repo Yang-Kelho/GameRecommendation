@@ -18,6 +18,10 @@ const Profile = (props) => {
       <div>
         {state.displayName}
       </div>
+
+      <div>
+        <h1> Your Posts </h1>
+      </div>
       <UserPostListing/>
     </div>
   )
