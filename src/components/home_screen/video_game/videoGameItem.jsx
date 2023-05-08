@@ -8,11 +8,10 @@ const VideoGameItem = props => {
   const handleClick = (gameID) => {
     handleAppChange("gameID", gameID)
     handleAppChange("modal", "game")
-    console.log('dttteyeytyeyy')
   }
   return (
     <div onClick={() => handleClick("10")}>
-      <div className="videoGameItem" >
+      <div className="videoGameItem">
         <img src={Noita}/>
       </div>
     </div>

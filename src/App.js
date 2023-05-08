@@ -8,6 +8,7 @@ import SearchResult from './components/home_screen/searchResult';
 import NavBar from './components/nav_bar/navBar';
 import { useState } from "react";
 import Modal from './components/modal/modal';
+import SignUpForm from './components/nav_Profile/signUpForm';
 
 import './components/stylesheets/App.css';
 
@@ -57,6 +58,7 @@ const App = () => {
             <Route path='/community' element={<CommunityScreen/>}/>
             <Route path='/profile' element={<Profile/>}/>
             <Route path='/result' element={<SearchResult/>}/>
+            <Route path='/signUp' element={<SignUpForm handlePopUp={handlePopUp} handleAppChange={handleAppChange}/>}/>
           </Routes>
         </div>
     </div>

@@ -1,11 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { login } from "../../utils/Ajax";
 import '../stylesheets/modal.scss';
 import $ from "jquery";
 import { useNavigate } from "react-router-dom";
+import SignUpForm from "./signUpForm";
 
 const LoginForm = props => {
+  const handlePopUp = props.handlePopUp;
   const [ state, setState ] = useState({
     username: "",
     password: "",
@@ -13,8 +14,9 @@ const LoginForm = props => {
   })
   const navigate = useNavigate()
 
-  const toProfile = () => {
-    navigate('/profile');
+  const toSignUp = () => {
+    handlePopUp();
+    navigate('/signUp');
   }
 
   const handleChange = (field) => {
@@ -27,7 +29,6 @@ const LoginForm = props => {
   const handleSubmit = () => {
     console.log("This came from the Login Form");
     console.log(state);
-    toProfile();
     // var frm = $('#1234');
     // $.ajax({
     //   type: 'POST',
@@ -47,11 +48,16 @@ const LoginForm = props => {
   return (
     <div>
       <div className="PopUpLogin">
+        <header>Log In</header>
         <form id="1234">
           <input name="username" type="text" placeholder="Username" onChange={handleChange("username")}/>   
-          <input name="password" type="text" placeholder="Password" onChange={handleChange("password")}/>
-          <button onClick={handleSubmit}> Submit </button>
+          <input name="password" type="password" placeholder="Password" onChange={handleChange("password")}/>
+          <button onClick={handleSubmit}> Log in </button>
         </form>
+        <div className="hyperlinks">
+          <a> Reset Password </a>
+          <h1> No account? <u onClick={() => {toSignUp()}}> Create one </u></h1>
+        </div>
       </div>
     </div>
   )

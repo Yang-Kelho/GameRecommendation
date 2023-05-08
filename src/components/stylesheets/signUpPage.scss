@@ -1,0 +1,73 @@
+.SignUpPage {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+
+  .SignUpBox {
+    position: absolute;
+    width: 450px;
+    height: 600px;
+    top: 50%;
+    left: 50%;
+    margin-top: -300px;
+    margin-left: -225px;
+    border: 2px;
+    border-color: gray;
+    border-radius: 8px;
+    border-style: solid;
+    display: grid;
+    justify-content: center;
+    header {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40%;
+      .first {
+        font-weight: bold;
+        font-size: 21px;
+        margin: 10px;
+      }
+      .second {
+        font-size: 18px;
+        margin: 10px;
+      }
+    }
+
+    form {
+      display: contents;
+      justify-content: center;
+      align-items: center;
+      input {
+        height: 5%;
+        padding: 5px;
+        margin: 5px 5px;
+        border-color: gray;
+        border-radius: 5px;
+      }
+
+      button {
+        height: 30px;
+        width: 95%;
+        color: white;
+        margin: 5px;
+        background-color: lightblue;
+      }
+    }
+    
+    footer {
+      margin: 5px;
+      margin-top: 20px;
+      a {
+        color: blue;
+        font-weight: bold;
+        text-underline-position: under;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
