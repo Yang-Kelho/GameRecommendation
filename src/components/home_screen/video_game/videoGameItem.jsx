@@ -5,20 +5,16 @@ import { useState, useEffect } from "react";
 import $ from "jquery";
 
 const VideoGameItem = props => {
-  const { gameID, handleAppChange } = props; 
+  const { gameID } = props; 
   const [ state, setState ] = useState({
     id: "",
     name: "",
     header_image: "",
   })
   const navigate = useNavigate();
-  const toGame = () => {
-    handleAppChange("gameID", state.id)
-  }
   
   const handleClick = () => {
-    toGame();
-    navigate("/app");
+    navigate("/app/:gameID");
   }
 
   useEffect(() => {

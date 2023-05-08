@@ -20,7 +20,6 @@ const App = () => {
   const [ state, setState ] = useState({
     popUp: false,
     modal: "login",
-    gameID: "",
   });
 
   const handlePopUp = () => {
@@ -61,7 +60,7 @@ const App = () => {
           <Route path='/profile' element={<Profile/>}/>
           <Route path='/result' element={<SearchResult/>}/>
           <Route path='/signUp' element={<SignUpForm handlePopUp={handlePopUp} handleAppChange={handleAppChange}/>}/>
-          <Route path='/app' element={<VideoGameItemDetails gameID={state.gameID}/>}/>
+          <Route path='/app/:gameID' element={<VideoGameItemDetails/>}/>
         </Routes>
       </div>
     </div>

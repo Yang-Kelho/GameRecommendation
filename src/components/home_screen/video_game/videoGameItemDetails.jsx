@@ -3,11 +3,13 @@ import $ from "jquery";
 import { useState, useEffect } from "react";
 import '../../stylesheets/videoGame.scss';
 import Screenshot from "./screenshot";
+import { useParams } from "react-router-dom";
+import VideoGames from "./videoGames";
 
 const VideoGameItemDetails = (props) => {
-  const { gameID } = props;
+  const { gameID } = useParams();
   const [ state, setState ] = useState({
-    id: "",
+    id: gameID,
     name: "",
     categories: [],
     developers: "",
@@ -15,8 +17,9 @@ const VideoGameItemDetails = (props) => {
     description: "",
     header_image: "",
     screenshots: "",
+    similar_games: [],
   })
-  console.log(props)
+
   useEffect(() => {
     $.ajax({
       url: "http://127.0.0.1:5000/game/" + gameID,
@@ -33,8 +36,39 @@ const VideoGameItemDetails = (props) => {
           description: data.detailed_description,
           header_image: data.header_image,
           screenshots: data.screenshots,
+        });
+        console.log(state);
+      }
+    });
+  }, [])
+  useEffect(() => {
+    console.log(state.name);
+    $.ajax({
+      url: "http://127.0.0.1:5000/game/recommendation",
+      type: 'GET',
+      data: {game: state.name},
+      dataType: 'json',
+      success : (data) => {
+        setState({
+          ...state,
+          similar_games: Object.values(data),
         })
-        console.log(data);
+        const arr = [];
+        for (var game in state.similar_games) {
+          $.ajax({
+            url:"http://127.0.0.1:5000/game/search",
+            type: 'GET',
+            data : {keywords : game},
+            dataType: 'json',
+            success : (data) => {
+              arr.push(data[0].id);
+            }
+          });
+        };
+        setState({
+          ...state,
+          similar_games: arr,
+        })
       }
     })
   }, [])
@@ -83,6 +117,10 @@ const VideoGameItemDetails = (props) => {
 
       <div>
         <h1>Comments</h1>
+      </div>
+
+      <div className="similarGamesContainer">
+        {<VideoGames videoGameArray={state.similar_games}/>}
       </div>
     </div>
   )
