@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { signup } from "../../utils/Ajax";
-import { useEffect } from "react";
 import '../stylesheets/signUpPage.scss';
 import $ from "jquery";
 
@@ -10,7 +9,6 @@ const SignUpForm = (props) => {
   const { handlePopUp, handleAppChange } = props; 
   const handleClick = () => {
     handlePopUp();
-    handleAppChange("modal", "login");
   }
 
   const [ state, setState ] = useState({

@@ -1,9 +1,8 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import '../stylesheets/modal.scss';
 import $ from "jquery";
 import { useNavigate } from "react-router-dom";
-import SignUpForm from "./signUpForm";
 
 const LoginForm = props => {
   const handlePopUp = props.handlePopUp;

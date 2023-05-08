@@ -19,9 +19,8 @@ import { Route, Router, Routes, Navigate } from 'react-router-dom';
 const App = () => {
   const [ state, setState ] = useState({
     popUp: false,
-    modal: "",
+    modal: "login",
     gameID: "",
-    
   });
 
   const handlePopUp = () => {
@@ -52,7 +51,7 @@ const App = () => {
         <NavBar handlePopUp={handlePopUp} handleAppChange={handleAppChange}/>
       </div>
       <div className="appEverythingElse">
-        <SearchBar/>
+        <SearchBar handleAppChange={handleAppChange}/>
         <Routes>
           <Route path='/' element={<HomeScreen handlePopUp={handlePopUp} handleAppChange={handleAppChange}/>}/>
           <Route path='/home' element={<HomeScreen handlePopUp={handlePopUp} handleAppChange={handleAppChange}/>}/>
@@ -62,7 +61,7 @@ const App = () => {
           <Route path='/profile' element={<Profile/>}/>
           <Route path='/result' element={<SearchResult/>}/>
           <Route path='/signUp' element={<SignUpForm handlePopUp={handlePopUp} handleAppChange={handleAppChange}/>}/>
-          <Route path='/app' element={<VideoGameItemDetails gameID={state.gameId}/>}/>
+          <Route path='/app' element={<VideoGameItemDetails gameID={state.gameID}/>}/>
         </Routes>
       </div>
     </div>

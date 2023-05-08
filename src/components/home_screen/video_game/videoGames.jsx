@@ -2,18 +2,18 @@ import React from "react";
 import VideoGameItem from "./videoGameItem";
 import '../../stylesheets/videoGame.scss';
 
-const VideoGame = props => {
+const VideoGames = props => {
   const {handleAppChange, videoGameArray} = props;
   console.log(videoGameArray)
   return (
-    <div className="videoGame">
-      {videoGameArray.map((num) => {
+    <div className="videoGames">
+      {videoGameArray.map((gameID) => {
         return (
-          <VideoGameItem handleAppChange={handleAppChange} key={num}/>
+          <VideoGameItem handleAppChange={handleAppChange} gameID={gameID}/>
         )
       })}
     </div>
   )
 }
 
-export default VideoGame;
+export default VideoGames;

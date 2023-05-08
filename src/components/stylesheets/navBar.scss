@@ -18,12 +18,13 @@
   .navButtonContainer {
     width: 100%;
     margin-top: 20px;
-
+    
     button {
       background-color: white;
       border: none;
-      height: 5vh;
-      width: 15vw;
+      margin-top: 5px;
+      height: 8vh;
+      width: 10vw;
       border-radius: 10px;
 
       &:hover{
@@ -50,8 +51,6 @@
 .navProfile {
   width: 100%;
   display: flex;
-  padding: 15px;
-  margin: 20px;
   border-radius: 10px;
   justify-content: center;
 

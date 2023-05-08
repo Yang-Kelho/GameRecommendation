@@ -1,21 +1,29 @@
-.videoGame {
+.videoGames {
   display: flex;
-  margin-top: 50px;
-  width: 100%;
-  justify-content: center;
-  overflow: auto;
-  white-space: nowrap;
+  position: relative;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: 124px;
+  white-space:nowrap;
+  margin-bottom: 20px !important;
+  width: 60vw;
+
   .videoGameItem {
-  display: inline-block;
-  text-decoration: none;
+    width: 100%;
+    background-color: #333;
     &:hover {
       filter: brightness(0.8);
       cursor: pointer;
     }
     img{
+      cursor: pointer;
+      display:inline-block;
+      vertical-align:top;
       height: 100px;
       width: 200px;
-      object-fit: cover;
+      border-color: lightblue;
+      border-width: 2px;
+      padding: 2px;
     }
     
   }
@@ -23,30 +31,50 @@
 
 .screenshot {
   img {
-    float: left;
-    width:  100px;
+    cursor: pointer;
+    display:inline-block;
+    vertical-align:top;
     height: 100px;
-    object-fit: cover;
-    margin: 5px;
+    width: 200px;
+    border-color: lightblue;
+    border-width: 2px;
+    padding: 2px;
   }
 }
 .Game {
-  position: absolute;
+  margin-top: 10px;
+  margin-left: 10px;
+  position: relative;
   display: grid;
   background-color: white;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-
-  .vgipuData {
-    .title {
-      font-size: 48px;
+  font-family: 'Trebuchet MS';
+  .layer1 {
+    display: flex;
+    .vgipuCoverImg {
+      // In case
+    }
+    .vgipuData {
+      margin-left: 10px;
+      .title {
+        font-size: 48px;
+      }
+      .metadata {
+        margin-top: 5px;
+      }
     }
   }
   .vgipuScreenshotContainer {
+    margin-top: 10px;
     .vgipuScreenshots {
-      display: flex
-      
+      margin-top: 10px;
+      display: flex;
+      position: relative;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      height: 124px;
+      white-space: nowrap;
+      margin-bottom: 20px !important;
+      width: 75vw;
     }
   }
 
