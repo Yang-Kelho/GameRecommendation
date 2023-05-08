@@ -26,16 +26,16 @@ const SignUpForm = (props) => {
   }
 
   const handleSubmit = () => {
-    // $.ajax({
-    //   url:"http://127.0.0.1:5000/profile",
-    //   type: 'GET',
-    //   xhrFields: {withCredentials: true}, 
-    //   crossDomain: true,
-    //   dataType: 'json',
-    //   success : (data) => {
-    //     console.log(data);
-    //   }
-    // });
+    $.ajax({
+      url:"http://127.0.0.1:5000/register",
+      type: 'GET',
+      xhrFields: {withCredentials: true},
+      crossDomain: true,
+      dataType: 'json',
+      success : (data) => {
+        console.log(data);
+      }
+    });
   }
 
   return (

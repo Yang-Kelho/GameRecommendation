@@ -1,12 +1,17 @@
-from flask import request, jsonify, Blueprint
+from flask import request, jsonify, Blueprint, session
 from pymongo import MongoClient
 from .recommendation import Recommendation
+from bson.objectid import ObjectId
 
 # database connection
 bp = Blueprint("game", __name__, url_prefix="/game")
 client = MongoClient("mongodb+srv://Chromato:Cookiejar34@masterproject.4stlgqr.mongodb.net/?retryWrites=true&w=majority")
 db = client['vgrec']
 games = db["games"]
+
+client2 = MongoClient("mongodb+srv://xtang10:tang123456@gamerecom.yyg15zm.mongodb.net/?retryWrites=true&w=majority")
+db2 = client2['user']
+saved = db2['saved']
 
 
 # game id look up: return a json file
@@ -47,19 +52,10 @@ def search_games():
 
     return jsonify({"result": False, 'message': 'No result found'})
 
+
 # Generate 10 random games
 @bp.route("/random")
 def get_random():
-    # counter = 0
-    # while True:
-    #     random_game_list = []
-    #     num = 10 * random.randint(1, 100)
-    #     game = games.find_one({'id': num})
-    #     if game:
-    #         counter += 1
-    #         random_game_list.append(game)
-    #     if counter == 10:
-    #         break
     my_list = games.aggregate([{'$sample': {'size': 10}}])
     random_list = []
 
@@ -97,3 +93,24 @@ def get_recent():
         return jsonify(result_list)
 
     return jsonify({'result': False, 'message': 'No result found'})
+
+
+@bp.route('/saved')
+def get_saved_games():
+    print(session)
+    my_id = session["user_id"]
+    user_saved_doc = saved.find_one({'saved_user': ObjectId(my_id)})
+    if user_saved_doc:
+        user_saved_games_id = user_saved_doc['saved_games']
+        user_saved_games = []
+        if user_saved_games_id:
+            for game_id in user_saved_games_id:
+                saved_game = games.find_one({"id": int(game_id)})
+                del saved_game['_id']
+                user_saved_games.append(saved_game)
+            return jsonify(user_saved_games)
+
+        else:
+            return jsonify({'Result': False, 'Message': 'No game saved'})
+    else:
+        return jsonify({'Result': False, 'Message': 'Please login first'})

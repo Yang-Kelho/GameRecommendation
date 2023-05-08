@@ -25,23 +25,25 @@ const LoginForm = props => {
     })
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     console.log("This came from the Login Form");
     console.log(state);
-    // var frm = $('#1234');
-    // $.ajax({
-    //   type: 'POST',
-    //   url: "http://127.0.0.1:5000/login",
-    //   data: frm.serialize(),
-    //   success: function (data) {
-    //       console.log('Submission was successful.');
-    //       console.log(data);
-    //   },
-    //   error: function (data) {
-    //       console.log('An error occurred.');
-    //       console.log(data);
-    //   }
-    // })    
+    var frm = $('#1234');
+    $.ajax({
+      type: 'POST',
+      url: "http://localhost:5000/login",
+      xhrFields:{withCredentials: true},
+      data: frm.serialize(),
+      success: function (data) {
+          console.log('Submission was successful.');
+          console.log(data);
+      },
+      error: function (data) {
+          console.log('An error occurred.');
+          console.log(data);
+      }
+    })
   }
 
   return (

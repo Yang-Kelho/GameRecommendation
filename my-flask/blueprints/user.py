@@ -33,6 +33,7 @@ def get_my_profile():
 
 @bp.route("/login", methods=['POST'])
 def login():
+    print(session)
     # if session has user_id, that means the user has logged in already
     if 'user_id' in session:
         return 'You have logged in already!'
