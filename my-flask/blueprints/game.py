@@ -3,7 +3,7 @@ from pymongo import MongoClient
 from .recommendation import Recommendation
 
 # database connection
-bp = Blueprint("game", __name__, "/game")
+bp = Blueprint("game", __name__, url_prefix="/game")
 client = MongoClient("mongodb+srv://Chromato:Cookiejar34@masterproject.4stlgqr.mongodb.net/?retryWrites=true&w=majority")
 db = client['vgrec']
 games = db["games"]
@@ -47,6 +47,53 @@ def search_games():
 
     return jsonify({"result": False, 'message': 'No result found'})
 
+# Generate 10 random games
+@bp.route("/random")
+def get_random():
+    # counter = 0
+    # while True:
+    #     random_game_list = []
+    #     num = 10 * random.randint(1, 100)
+    #     game = games.find_one({'id': num})
+    #     if game:
+    #         counter += 1
+    #         random_game_list.append(game)
+    #     if counter == 10:
+    #         break
+    my_list = games.aggregate([{'$sample': {'size': 10}}])
+    random_list = []
+
+    for doc in my_list:
+        del doc['_id']
+        random_list.append(doc)
+    print(random_list)
+
+    return jsonify(random_list)
 
 
+@bp.route('/category')
+def get_random_by_category():
+    category = request.args.get('category')
+    my_list = games.aggregate([{'$match': {'categories': category}}, {'$sample': {'size': 10}}])
+    random_category_list = []
 
+    if my_list:
+        for doc in my_list:
+            del doc['_id']
+            random_category_list.append(doc)
+        return jsonify(random_category_list)
+
+    return jsonify({'result': False, 'message': 'Please enter a valid category'})
+
+
+@bp.route('/recent')
+def get_recent():
+    recent_list = games.aggregate([{'$sort': {'id': -1}}, {'$limit': 10}])
+    result_list = []
+    if recent_list:
+        for doc in recent_list:
+            del doc['_id']
+            result_list.append(doc)
+        return jsonify(result_list)
+
+    return jsonify({'result': False, 'message': 'No result found'})
