@@ -88,26 +88,3 @@
     }
   }
 }
-
-.PopUpGame {
-  position: absolute;
-  display: grid;
-  z-index: 5;
-  background-color: white;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-
-  .vgipuData {
-    .title {
-      font-size: 48px;
-    }
-  }
-  .vgipuScreenshotContainer {
-    .vgipuScreenshots {
-      display: flex
-      
-    }
-  }
-
-}

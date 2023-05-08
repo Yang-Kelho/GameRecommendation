@@ -1,28 +1,23 @@
 .videoGame {
   display: flex;
-  flex-wrap: wrap;
   margin-top: 50px;
   width: 100%;
-  overflow: scroll;
-  align-items: center;
   justify-content: center;
-
+  overflow: auto;
+  white-space: nowrap;
   .videoGameItem {
-
+  display: inline-block;
+  text-decoration: none;
     &:hover {
       filter: brightness(0.8);
       cursor: pointer;
     }
-    
-    padding: 4px;
-    margin: 10px 5px;
-    background-color: blue;
-
     img{
-      height: 10vh;
-      width: 20vh;
+      height: 100px;
+      width: 200px;
       object-fit: cover;
     }
+    
   }
 }
 
@@ -34,4 +29,25 @@
     object-fit: cover;
     margin: 5px;
   }
+}
+.Game {
+  position: absolute;
+  display: grid;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  .vgipuData {
+    .title {
+      font-size: 48px;
+    }
+  }
+  .vgipuScreenshotContainer {
+    .vgipuScreenshots {
+      display: flex
+      
+    }
+  }
+
 }

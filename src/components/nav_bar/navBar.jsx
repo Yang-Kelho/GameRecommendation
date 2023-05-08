@@ -9,18 +9,18 @@ import '../stylesheets/navBar.scss';
 const NavBar = props => {
   const { handlePopUp, handleAppChange } = props;
   const handleChange = () => {
-    handlePopUp();
     handleAppChange("modal", "login");
+    handlePopUp();
   }
 
   const navigate = useNavigate();
 
-  const toSaved = () => {
-    navigate('/saved');
-  }
-
   const toHome = () => {
     navigate('/home');
+  }
+
+  const toSaved = () => {
+    navigate('/saved');
   }
 
   const toList = () => {
@@ -30,9 +30,6 @@ const NavBar = props => {
   const toCommunity = () => {
     navigate('/community');
   }
-
-
-
 
   return (
     <nav className="navBar">

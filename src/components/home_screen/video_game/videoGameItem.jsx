@@ -1,14 +1,21 @@
 import React from "react";
 import '../../stylesheets/videoGame.scss';
 import Noita from './Noita.jpg';
+import { useNavigate } from "react-router-dom";
 
 const VideoGameItem = props => {
-  const { handlePopUp, handleAppChange } = props; 
+  const { handleAppChange } = props; 
 
-  const handleClick = (gameID) => {
+  const navigate = useNavigate();
+  const toGame = (gameID) => {
     handleAppChange("gameID", gameID)
-    handleAppChange("modal", "game")
   }
+  
+  const handleClick = (gameID) => {
+    toGame(gameID);
+    navigate("/app");
+  }
+
   return (
     <div onClick={() => handleClick("10")}>
       <div className="videoGameItem">
@@ -18,4 +25,4 @@ const VideoGameItem = props => {
   )
 }
 
-export default VideoGameItem 
+export default VideoGameItem;

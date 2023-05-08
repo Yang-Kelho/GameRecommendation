@@ -5,12 +5,11 @@
 }
 
 .appNavBar {
-  width: 10vw;
+  width: 15vw;
   height: 100vh;
-  z-index: 2;
 }
 
 .appEverythingElse {
-  width: 90vw;
+  width: 85vw;
   height: 100vh;
 }

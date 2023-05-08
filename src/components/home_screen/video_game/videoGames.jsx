@@ -3,12 +3,13 @@ import VideoGameItem from "./videoGameItem";
 import '../../stylesheets/videoGame.scss';
 
 const VideoGame = props => {
-  const {handlePopUp, handleAppChange, videoGameArray} = props;
+  const {handleAppChange, videoGameArray} = props;
+  console.log(videoGameArray)
   return (
     <div className="videoGame">
       {videoGameArray.map((num) => {
         return (
-          <VideoGameItem handlePopUp={handlePopUp} handleAppChange={handleAppChange} key={num}/>
+          <VideoGameItem handleAppChange={handleAppChange} key={num}/>
         )
       })}
     </div>

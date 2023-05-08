@@ -1,9 +1,8 @@
 import React from "react";
 import LoginForm from "../nav_Profile/loginForm";
-import VideoGameItemPopUp from "../home_screen/video_game/videoGameItemPopUp";
 
 const Modal = props => {
-  const { modal, handlePopUp, handleAppChange, gameID } = props;
+  const { modal, handlePopUp } = props;
 
   if (!modal) return null;
 
@@ -12,9 +11,6 @@ const Modal = props => {
   switch (modal) {
     case "login":
       component = <LoginForm handlePopUp={handlePopUp}/>;
-      break;
-    case "game":
-      component = <VideoGameItemPopUp gameID={gameID}/>;
       break;
     default:
       return null;

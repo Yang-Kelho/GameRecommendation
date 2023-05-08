@@ -1,10 +1,10 @@
 import React from "react";
 import $ from "jquery";
 import { useState, useEffect } from "react";
-import '../../stylesheets/modal.scss';
+import '../../stylesheets/videoGame.scss';
 import Screenshot from "./screenshot";
 
-const VideoGameItemPopUp = (id) => {
+const VideoGameItemDetails = (id) => {
   const [ state, setState ] = useState({
     id: "",
     name: "",
@@ -19,7 +19,7 @@ const VideoGameItemPopUp = (id) => {
   useEffect(() => {
 
     $.ajax({
-      url: "http://127.0.0.1:5000/10",
+      url: "http://127.0.0.1:5000/396900",
       type: 'GET',
       dataType: 'json',
       success : (data) => {
@@ -48,7 +48,7 @@ const VideoGameItemPopUp = (id) => {
   displayScreenshots();
 
   return (
-    <div className="PopUpGame">
+    <div className="Game">
       <div className="vgipuCoverImg">
         <img src={state.header_image}/>
       </div>
@@ -83,4 +83,4 @@ const VideoGameItemPopUp = (id) => {
   )
 }
 
-export default VideoGameItemPopUp;
+export default VideoGameItemDetails;
