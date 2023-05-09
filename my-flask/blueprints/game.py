@@ -117,3 +117,16 @@ def get_saved_games():
     else:
         # user does not have a saved document in the database:
         return jsonify({'Result': False, 'Message': 'No game saved'})
+
+
+@bp.route('/add')
+def add_saved_game():
+    if 'user_id' not in session:
+        return jsonify({'Result': False, 'Message': 'Please login first'})
+
+    my_id = session['user_id']
+    game_id = request.args.get('id')
+
+    saved.update_one({'saved_id': ObjectId(my_id)}, {'$push': {'saved_games': str(game_id)}})
+    return jsonify({'Result': True, 'Message': 'Success!'})
+
