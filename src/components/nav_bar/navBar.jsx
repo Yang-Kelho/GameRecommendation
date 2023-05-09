@@ -7,10 +7,15 @@ import community_icon from '../sprites/icons/community_icon.png';
 import '../stylesheets/navBar.scss';
 
 const NavBar = props => {
-  const { handlePopUp, handleAppChange } = props;
+  const { loggedIn, username, handlePopUp, handleAppChange } = props;
   const handleChange = () => {
-    handleAppChange("modal", "login");
-    handlePopUp();
+    if (loggedIn) {
+      navigate('/profile');
+    }
+    else {
+      handleAppChange("modal", "login");
+      handlePopUp();
+    }
   }
 
   const navigate = useNavigate();
@@ -57,7 +62,7 @@ const NavBar = props => {
       </div>
 
       <div className="navProfile">
-        <button onClick={handleChange}>Username</button>
+        <button onClick={handleChange}> { loggedIn ? username : "Username"} </button>
       </div>
     </nav> 
   ) 

@@ -7,7 +7,7 @@ import Profile from './components/nav_Profile/profile';
 import SearchBar from './components/searchBar/searchBar';
 import SearchResult from './components/home_screen/searchResult';
 import NavBar from './components/nav_bar/navBar';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from './components/modal/modal';
 import SignUpForm from './components/nav_Profile/signUpForm';
 import VideoGameItemDetails from './components/home_screen/video_game/videoGameItemDetails';
@@ -15,12 +15,15 @@ import VideoGameItemDetails from './components/home_screen/video_game/videoGameI
 import './components/stylesheets/App.css';
 
 import { Route, Router, Routes, Navigate } from 'react-router-dom';
+import $ from "jquery";
 
 const App = () => {
   const [ state, setState ] = useState({
     popUp: false,
     modal: "login",
     loggedIn: false,
+    username: "",
+    savedGames: [],
   });
 
   const handlePopUp = () => {
@@ -28,11 +31,10 @@ const App = () => {
       ...state,
       popUp: !state.popUp,
     })
-    console.log("hpu");
-    console.log(state)
   }
 
   const handleAppChange = (field, value) => {
+    console.log(field + " " + value);
     setState({
       ...state,
       [field]: value,
@@ -41,14 +43,53 @@ const App = () => {
     console.log(state)
   }
 
+  useEffect(() => {
+    $.ajax({
+      url: "http://localhost:5000/profile",
+      type: 'GET',
+      xhrFields:{withCredentials: true},
+      success: (data) => {
+        if(data.size > 2) {
+          setState({
+            ...state,
+            username: data.profile_name,
+            loggedIn: true,
+          })
+        }
+        console.log(data)
+      } 
+    });
+    if (state.loggedIn) {
+      $.ajax({
+        type: 'GET',
+        url: "http://localhost:5000/game/saved",
+        xhrFields:{withCredentials: true},
+        success: (data) => {
+          const arr = [];
+          for (var game of data) {
+            arr.push(game.id)
+          }
+          setState({
+            ...state,
+            savedGames: arr
+          })
+          console.log(data);
+          console.log(state);
+        },
+      })
+    }
+  }, [])
+
+
   return (
     <div className='app'>
       {
-        state.popUp ? (<Modal modal={state.modal} handlePopUp={handlePopUp}/>) : null
+        state.popUp ? (<Modal modal={state.modal} handlePopUp={handlePopUp} handleAppChange={handleAppChange}/>) : null
       }
 
       <div className='appNavBar'>
-        <NavBar handlePopUp={handlePopUp} handleAppChange={handleAppChange}/>
+        <NavBar loggedIn={state.loggedIn} username={state.username} handlePopUp={handlePopUp} handleAppChange={handleAppChange}/>
+        <button onClick={() => {console.log(state)}}> State </button>
       </div>
       <div className="appEverythingElse">
         <SearchBar handleAppChange={handleAppChange}/>
@@ -61,7 +102,7 @@ const App = () => {
           <Route path='/profile' element={<Profile/>}/>
           <Route path='/result' element={<SearchResult/>}/>
           <Route path='/signUp' element={<SignUpForm handlePopUp={handlePopUp} handleAppChange={handleAppChange}/>}/>
-          <Route path='/app/:gameID' element={<VideoGameItemDetails/>}/>
+          <Route path='/app/:gameID' element={<VideoGameItemDetails savedGames={state.savedGames}/>}/>
         </Routes>
       </div>
     </div>

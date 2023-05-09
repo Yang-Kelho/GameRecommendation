@@ -4,8 +4,10 @@ import $ from "jquery";
 import '../../stylesheets/videoGame.scss';
 import Screenshot from "./screenshot";
 import VideoGames from "./videoGames";
+import like_icon from "../../sprites/icons/like_icon.png";
+import like_icon_filled from "../../sprites/icons/like_icon_filled.png";
 
-const VideoGameItemDetails = () => {
+const VideoGameItemDetails = (props) => {
   const { gameID } = useParams();
   const [name, setName] = useState("");
   const [categories, setCategories] = useState([]);
@@ -15,10 +17,21 @@ const VideoGameItemDetails = () => {
   const [headerImage, setHeaderImage] = useState("");
   const [screenshots, setScreenshots] = useState([]);
   const [similarGames, setSimilarGames] = useState([]);
+  const { savedGames } = props;
 
+  const handleLike = (e) => {
+    $.ajax({
+      url: `http://127.0.0.1:5000/game/add`,
+      type: "GET",
+      data : {id : gameID},
+      success: () => {
+        window.location.reload();
+      }
+    })
+  }
   useEffect(() => {
     const fetchData = async () => {
-      $.ajax({
+      await $.ajax({
         url: `http://127.0.0.1:5000/game/${gameID}`,
         type: "GET",
         dataType: "json",
@@ -41,24 +54,25 @@ const VideoGameItemDetails = () => {
       const data = await $.ajax({
         url: "http://127.0.0.1:5000/game/recommendation",
         type: 'GET',
-        data: {game: name},
+        data: {game: name.replace("+", "%2B")},
         dataType: 'json',
       });
+      console.log(data)
       const arr = [];
       for (var game of data) {
         const gameData = await $.ajax({
           url:"http://127.0.0.1:5000/game/search",
           type: 'GET',
-          data : {keywords : game},
+          data : {keywords : game.replace("+", "%2B")},
           dataType: 'json',
         });
+        console.log(gameData[0].id)
         arr.push(gameData[0].id);
       };
       setSimilarGames(arr);
     };
     fetchRecommendations();
   }, [name]);
-
   return (
     <div className="Game">
       <div className="layer1">
@@ -66,6 +80,9 @@ const VideoGameItemDetails = () => {
           <img src={headerImage} alt={name} />
         </div>
         <div className="vgipuData">
+          <div className="heart">
+            {savedGames.includes(parseInt(gameID)) ? <img src={like_icon_filled}/> : <img src={like_icon} onClick={() => handleLike()} />}
+          </div>
           <h1 className="title">{name}</h1>
           <div className="metadata">
             <span> 
@@ -94,7 +111,7 @@ const VideoGameItemDetails = () => {
       </div>
 
       <div>
-        <h1>Comments</h1>
+        <h1>Recommended Games for you:</h1>
       </div>
     <div className="similarGamesContainer">
       {console.log(similarGames)}

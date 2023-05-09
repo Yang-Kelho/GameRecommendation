@@ -4,4 +4,14 @@
   width: 100%;
   align-items: center;
   flex-direction: column;
+
+  .gameContainer {
+    margin-top: 16px;
+    .videoGameContainer {
+      h1 {
+        font-size: 36px;
+        font-family: 'Trebuchet MS';
+      }
+    }
+  }
 }

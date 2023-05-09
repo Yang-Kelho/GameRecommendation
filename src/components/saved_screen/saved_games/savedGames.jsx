@@ -1,5 +1,5 @@
 import React from "react";
-import SavedGamesCard from "./savedGamesCard";
+import VideoGameItem from "../../home_screen/video_game/videoGameItem";
 import '../../stylesheets/savedScreen.scss';
 
 const SavedGames = (props) => {

@@ -21,11 +21,11 @@ def get_my_profile():
     else:
         return jsonify({'result': False, 'message': 'Please login first!'})
 
-    obj_id = ObjectId(user_id)
     if user_id:
-        user_profile = profile.find_one({"_id": obj_id})
+        user_profile = profile.find_one({"profile_user": ObjectId(user_id)})
         # return the user profile to the front end
         del user_profile['_id']
+        del user_profile['profile_user']
         return jsonify(user_profile)
     else:
         return jsonify({"status": False, 'message': 'No user found'})
@@ -36,7 +36,7 @@ def login():
     print(session)
     # if session has user_id, that means the user has logged in already
     if 'user_id' in session:
-        return 'You have logged in already!'
+        return jsonify({"result": True, 'message': 'You have logged in already!'})
     # 1. get username and password from client
     form = LoginForm(request.form)
     # 2. validate

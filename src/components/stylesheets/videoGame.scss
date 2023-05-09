@@ -6,7 +6,7 @@
   height: 124px;
   white-space:nowrap;
   margin-bottom: 20px !important;
-  width: 60vw;
+  width: 80vw;
 
   .videoGameItem {
     width: 100%;
@@ -17,7 +17,7 @@
     }
     img{
       cursor: pointer;
-      display:inline-block;
+      display: inline-block;
       vertical-align:top;
       height: 100px;
       width: 200px;
@@ -46,7 +46,7 @@
   margin-left: 10px;
   position: relative;
   display: grid;
-  background-color: white;
+  background: none;
   font-family: 'Trebuchet MS';
   .layer1 {
     display: flex;

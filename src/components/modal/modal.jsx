@@ -2,7 +2,7 @@ import React from "react";
 import LoginForm from "../nav_Profile/loginForm";
 
 const Modal = props => {
-  const { modal, handlePopUp } = props;
+  const { modal, handlePopUp, handleAppChange } = props;
 
   if (!modal) return null;
 
@@ -10,7 +10,7 @@ const Modal = props => {
 
   switch (modal) {
     case "login":
-      component = <LoginForm handlePopUp={handlePopUp}/>;
+      component = <LoginForm handlePopUp={handlePopUp} handleAppChange={handleAppChange}/>;
       break;
     default:
       return null;

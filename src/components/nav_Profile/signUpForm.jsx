@@ -25,17 +25,25 @@ const SignUpForm = (props) => {
     })
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log("This came from the SignUpForm");
+    console.log(state);
+    var frm = $('#4321');
     $.ajax({
-      url:"http://127.0.0.1:5000/register",
-      type: 'GET',
-      xhrFields: {withCredentials: true},
-      crossDomain: true,
-      dataType: 'json',
-      success : (data) => {
-        console.log(data);
+      type: 'POST',
+      url: "http://localhost:5000/register",
+      xhrFields:{withCredentials: true},
+      data: frm.serialize(),
+      success: function (data) {
+          alert(data.message);
+          console.log(data);
+      },
+      error: function (data) {
+          alert(data.message);
+          console.log(data);
       }
-    });
+    })
   }
 
   return (

@@ -2,6 +2,11 @@
   width: 100%;
   height: 100%;
   display: flex;
+  color: #c7d5e0;
+  background: url('https://steampowered.com/public/images/v6/colored_body_top.png') #1b2838;  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .appNavBar {

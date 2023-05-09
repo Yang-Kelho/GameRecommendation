@@ -48,14 +48,19 @@ const HomeScreen = (props) => {
 
   return ( 
     <div className="homeScreen">
-      <div className="recommendationsContainer">
-        <VideoGames handleAppChange={props.handleAppChange} videoGameArray={randomGameArray}/>
-      </div>
-      <div className="videoGameContainer">
-        <VideoGames handleAppChange={props.handleAppChange} videoGameArray={singleplayerGameArray}/>
-      </div>
-      <div className="videoGameContainer">
-        <VideoGames handleAppChange={props.handleAppChange} videoGameArray={multiplayerGameArray}/>
+      <div className="gameContainer">
+        <div className="videoGameContainer">
+          <h1> Random Games: </h1>
+          <VideoGames handleAppChange={props.handleAppChange} videoGameArray={randomGameArray}/>
+        </div>
+        <div className="videoGameContainer">
+          <h1> Singleplayer Games: </h1>
+          <VideoGames handleAppChange={props.handleAppChange} videoGameArray={singleplayerGameArray}/>
+        </div>
+        <div className="videoGameContainer">
+          <h1> Multiplayer Games: </h1>
+          <VideoGames handleAppChange={props.handleAppChange} videoGameArray={multiplayerGameArray}/>
+        </div>
       </div>
     </div>
   )

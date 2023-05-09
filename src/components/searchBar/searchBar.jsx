@@ -17,7 +17,7 @@ const SearchBar = (props) => {
     $.ajax({
       url:"http://127.0.0.1:5000/game/search",
       type: 'GET',
-      data : {keywords : inputValue},
+      data : {keywords : inputValue.replace("+", "%2B")},
       dataType: 'json',
       success : (data) => {
         console.log(data[0].id);

@@ -127,6 +127,6 @@ def add_saved_game():
     my_id = session['user_id']
     game_id = request.args.get('id')
 
-    saved.update_one({'saved_id': ObjectId(my_id)}, {'$push': {'saved_games': str(game_id)}})
+    saved.update_one({'saved_user': ObjectId(my_id)}, {'$push': {'saved_games': str(game_id)}})
     return jsonify({'Result': True, 'Message': 'Success!'})
 

@@ -5,7 +5,7 @@ import $ from "jquery";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = props => {
-  const handlePopUp = props.handlePopUp;
+  const { handlePopUp, handleAppChange } = props;
   const [ state, setState ] = useState({
     username: "",
     password: "",
@@ -27,20 +27,25 @@ const LoginForm = props => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log("This came from the Login Form");
-    console.log(state);
     var frm = $('#1234');
     $.ajax({
       type: 'POST',
       url: "http://localhost:5000/login",
       xhrFields:{withCredentials: true},
       data: frm.serialize(),
-      success: function (data) {
-          console.log('Submission was successful.');
-          console.log(data);
+      success: (data) => {
+        console.log(data.result);
+        alert(data.message);
+        if(data.result === true) {
+          handleAppChange("loggedIn", true);
+        }
+        console.log(data);
+        handlePopUp()
       },
       error: function (data) {
-          console.log('An error occurred.');
-          console.log(data);
+        alert(data.message);
+        console.log(data);
+        handlePopUp();
       }
     })
   }
