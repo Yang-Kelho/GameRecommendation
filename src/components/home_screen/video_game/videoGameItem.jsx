@@ -14,7 +14,7 @@ const VideoGameItem = props => {
   const navigate = useNavigate();
   
   const handleClick = () => {
-    navigate("/app/:gameID");
+    navigate(`/app/${gameID}`);
   }
 
   useEffect(() => {

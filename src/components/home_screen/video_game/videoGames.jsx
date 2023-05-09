@@ -1,15 +1,15 @@
 import React from "react";
 import VideoGameItem from "./videoGameItem";
 import '../../stylesheets/videoGame.scss';
+import { useState } from "react";
 
 const VideoGames = props => {
   const {videoGameArray} = props;
-  console.log(videoGameArray)
   return (
     <div className="videoGames">
-      {videoGameArray.map((gameID) => {
+      {videoGameArray.map((gameID, i) => {
         return (
-          <VideoGameItem gameID={gameID}/>
+          <VideoGameItem gameID={gameID} key={i}/>
         )
       })}
     </div>

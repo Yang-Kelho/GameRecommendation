@@ -25,7 +25,7 @@ const SearchBar = (props) => {
         window.location.reload(false);
       }
     });
-  }
+}
 
   return (
     <div className="searchBar">

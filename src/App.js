@@ -20,6 +20,7 @@ const App = () => {
   const [ state, setState ] = useState({
     popUp: false,
     modal: "login",
+    loggedIn: false,
   });
 
   const handlePopUp = () => {

@@ -9,7 +9,6 @@ const LoginForm = props => {
   const [ state, setState ] = useState({
     username: "",
     password: "",
-    loggedIn: false
   })
   const navigate = useNavigate()
 

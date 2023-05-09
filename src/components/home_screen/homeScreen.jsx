@@ -1,59 +1,51 @@
-import React from "react";
-    import VideoGames from "./video_game/videoGames";
+import React, { useEffect, useState } from "react";
+import VideoGames from "./video_game/videoGames";
 import '../stylesheets/homeScreen.scss';
 import $ from "jquery";
-import { useState } from "react";
 
 const HomeScreen = (props) => {
-
-  const randomGameArray = [];
-  const singleplayerGameArray = [];
-  const multiplayerGameArray = [];
-  // const [ state ] = useState({
-  //   ...state,
-  //   randomGameArray: [],
-  //   singleplayerGameArray: [],
-  //   multiplayerGameArray: [],
-  // })
-  // const array = [550010, 6310, 558420, 253710, 2073470, 1515950, 466300, 1017180, 611760, 740130];
-  const runOnce = () => {
+  
+  const [ randomGameArray, setRandomGameArray ] = useState([]);
+  const [ singleplayerGameArray, setSingleplayerGameArray ] = useState([]);
+  const [ multiplayerGameArray, setMultiplayerGameArray ] = useState([]);
+  useEffect(() => {
     $.ajax({
       url: "http://127.0.0.1:5000/game/random",
       type: 'GET',
       dataType: 'json',
-      success : (data) => {
-        for (const obj of data) {
-          randomGameArray.push(obj.id)
-        }
-        console.log(randomGameArray)
+    }).then(data => {
+      const gameID = [];
+      for (const game of data) {
+        gameID.push(game.id);
       }
+      setRandomGameArray(gameID)
     })
     $.ajax({
       url: "http://127.0.0.1:5000/game/random",
       type: 'GET',
       data : {categories : "singleplayer"},
       dataType: 'json',
-      success : (data) => {
-        for (const obj of data) {
-          singleplayerGameArray.push(obj.id)
-        }
-        console.log(singleplayerGameArray)
+    }).then(data => {
+      const gameID = [];
+      for (const game of data) {
+        gameID.push(game.id);
       }
+      setSingleplayerGameArray(gameID);
     })
     $.ajax({
       url: "http://127.0.0.1:5000/game/random",
       type: 'GET',
       data : {categories : "multiplayer"},
       dataType: 'json',
-      success : (data) => {
-        for (const obj of data) {
-          multiplayerGameArray.push(obj.id)
-        }
-        console.log(multiplayerGameArray)
+    }).then(data => {
+      const gameID = [];
+      for (const game of data) {
+        gameID.push(game.id);
       }
+      setMultiplayerGameArray(gameID);
     })
-  }
-  runOnce();
+  }, [])
+
   return ( 
     <div className="homeScreen">
       <div className="recommendationsContainer">
