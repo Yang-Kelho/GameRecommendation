@@ -15,6 +15,7 @@ const VideoGameItem = props => {
   
   const handleClick = () => {
     navigate(`/app/${gameID}`);
+    window.location.reload();
   }
 
   useEffect(() => {
@@ -31,7 +32,7 @@ const VideoGameItem = props => {
         })
       }
     })
-  })
+  }, [])
   return (
     <div onClick={() => handleClick()}>
       <div className="videoGameItem">

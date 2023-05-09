@@ -80,22 +80,22 @@ const VideoGameItemDetails = () => {
         
 
     </div>
-      <div className="vgipuScreenshotContainer">
-        <h1>Screenshots</h1>
-        <div className="vgipuScreenshots">
-        {
-          screenshots.map((idx) => {
-            return (
-              <Screenshot image={idx} />
-            )
-          })
-        }
+        <div className="vgipuScreenshotContainer">
+          <h1>Screenshots</h1>
+          <div className="vgipuScreenshots">
+          {
+            screenshots.map((idx) => {
+              return (
+                <Screenshot image={idx} />
+              )
+            })
+          }
+        </div>
       </div>
-    </div>
 
-    <div>
-      <h1>Comments</h1>
-    </div>
+      <div>
+        <h1>Comments</h1>
+      </div>
     <div className="similarGamesContainer">
       {console.log(similarGames)}
       {<VideoGames videoGameArray={similarGames}/>}
