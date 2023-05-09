@@ -2,7 +2,6 @@ from flask import Flask, jsonify
 from blueprints.user import bp as user_bp
 from blueprints.community import bp as community_bp
 from blueprints.game import bp as game_bp
-from blueprints.home import bp as home_bp
 from blueprints.list import bp as list_bp
 from flask_cors import CORS
 import config
@@ -16,7 +15,6 @@ CORS(app, supports_credentials=True)
 app.register_blueprint(user_bp)
 app.register_blueprint(community_bp)
 app.register_blueprint(game_bp)
-app.register_blueprint(home_bp)
 app.register_blueprint(list_bp)
 
 # config the app

@@ -1,5 +1,6 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, session, request
 from pymongo import MongoClient
+from bson.objectid import ObjectId
 bp = Blueprint("community", __name__, url_prefix="/post")
 
 client = MongoClient("mongodb+srv://xtang10:tang123456@gamerecom.yyg15zm.mongodb.net/?retryWrites=true&w=majority")
@@ -7,18 +8,10 @@ userdb = client['user']
 post = userdb["post"]
 
 
-@bp.route("/<int:number>")
-def get_post(number):
-    """
-    get all the post from the database, limited to 10 so far
-    for frontend:
-    number should be 10, 20, 30... and so on, so you don't receive duplicated data
-    :param number:
-    :return: list of posts
-    """
-
-    # the number is used to determine the page of records in mongodb
-    post_list = {"post": post.find().limit(10).skip(number)}
+# randomly sample 10 posts from the database
+@bp.route("/get")
+def get_post():
+    post_list = post.aggregate([{'$sample': 10}])
     if post_list:
         posts = []
         for doc in post_list:
@@ -29,3 +22,19 @@ def get_post(number):
     else:
         # if nothing found, return 0
         return jsonify({'result': False, 'message': 'No post found'})
+
+
+@bp.route('/set')
+def set_post():
+    # get 2 parameters from the request: title and content:
+    if 'user_id' not in session:
+        return jsonify({'Result': False, 'Message': 'Please login first!'})
+    else:
+        post_title = request.args.get('title')
+        post_content = request.args.get('content')
+        # if title and content exist:
+        if post_title is not None and post_content is not None:
+            post.insert_one({'post_title': post_title, 'post_content': post_content})
+            return jsonify({'Result': True, 'Message': 'Success!'})
+        else:
+            return jsonify({'Result': False, 'Message': 'Title or Content must not be none'})

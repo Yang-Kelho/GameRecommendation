@@ -97,12 +97,14 @@ def get_recent():
 
 @bp.route('/saved')
 def get_saved_games():
-    print(session)
+    if 'user_id' not in session:
+        return jsonify({'Result': False, 'Message': 'Please login first'})
+
     my_id = session["user_id"]
     user_saved_doc = saved.find_one({'saved_user': ObjectId(my_id)})
     if user_saved_doc:
-        user_saved_games_id = user_saved_doc['saved_games']
         user_saved_games = []
+        user_saved_games_id = user_saved_doc['saved_games']
         if user_saved_games_id:
             for game_id in user_saved_games_id:
                 saved_game = games.find_one({"id": int(game_id)})
@@ -113,4 +115,5 @@ def get_saved_games():
         else:
             return jsonify({'Result': False, 'Message': 'No game saved'})
     else:
-        return jsonify({'Result': False, 'Message': 'Please login first'})
+        # user does not have a saved document in the database:
+        return jsonify({'Result': False, 'Message': 'No game saved'})
