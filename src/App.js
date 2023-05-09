@@ -49,7 +49,8 @@ const App = () => {
       type: 'GET',
       xhrFields:{withCredentials: true},
       success: (data) => {
-        if(data.size > 2) {
+        // Get the backend to send data.result = true if it works.
+        if (data.profile_name != null) {
           setState({
             ...state,
             username: data.profile_name,
@@ -65,6 +66,7 @@ const App = () => {
         url: "http://localhost:5000/game/saved",
         xhrFields:{withCredentials: true},
         success: (data) => {
+          console.log(data)
           const arr = [];
           for (var game of data) {
             arr.push(game.id)
@@ -78,7 +80,7 @@ const App = () => {
         },
       })
     }
-  }, [])
+  }, [state.loggedIn])
 
 
   return (
